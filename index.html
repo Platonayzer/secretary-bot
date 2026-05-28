@@ -1382,7 +1382,7 @@
           frameborder="0"
           scrolling="no"
           width="100%"
-          height="420"
+          height="640"
           title="Форма заявки на ранний доступ"
           allow="clipboard-write"
         ></iframe>
@@ -1528,21 +1528,33 @@
   initSwipeDots('benefitsGrid', 'benefitsDots');
 
   // ---------- ЯНДЕКС ФОРМЫ: авто-высота iframe ----------
-  // Яндекс Формы отправляют postMessage с высотой контента при изменении формы.
-  // Это позволяет убрать внутренний скролл и подстроить iframe под реальный контент.
+  // Яндекс Формы шлют postMessage при загрузке и после любого изменения
+  // (показ экрана успеха, валидация). Подхватываем → убираем внутренний скролл.
+  //
+  // Возможные форматы из разных версий Яндекс Форм:
+  //   { height: N }
+  //   { iframe_height: N }
+  //   строка вида "{"height":N}"
   (function(){
-    const iframe = document.getElementById('yfIframe');
+    var iframe = document.getElementById('yfIframe');
     if (!iframe) return;
+
+    function applyHeight(px){
+      // +64px — запас: кнопка + нижний padding Яндекс Форм
+      var h = Math.round(px) + 64;
+      // Никогда не уменьшаем ниже стартовых 640px (защита от ложных событий)
+      if (h < 640) return;
+      iframe.style.height = h + 'px';
+    }
+
     window.addEventListener('message', function(e){
-      // Яндекс Формы шлют объект вида: { type: 'form-height', height: N }
-      // Принимаем только от доверенного origin forms.yandex.ru
       if (e.origin !== 'https://forms.yandex.ru') return;
       try {
-        var data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
-        if (data && data.height && data.height > 50) {
-          // +32px — небольшой буфер, чтобы кнопка не обрезалась
-          iframe.style.height = (data.height + 32) + 'px';
-        }
+        var d = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
+        if (!d) return;
+        // handle both known key names
+        var h = d.height || d.iframe_height || 0;
+        if (h > 50) applyHeight(h);
       } catch(_){}
     }, false);
   })();
