@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Контакты — Секретарь-бот</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="legal.css">
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="top">
+    <a class="logo" href="./">
+      <span class="dot">с</span>
+      <span>Секретарь&middot;bot</span>
+    </a>
+    <a class="back-link" href="./">← На главную</a>
+  </nav>
+
+  <header class="page-head">
+    <div class="kicker">/ Связь</div>
+    <h1>Контакты для связи</h1>
+    <div class="page-meta">Отвечаем в течение 1–2 рабочих дней</div>
+  </header>
+
+  <main class="content">
+
+    <p>Напишите нам — если есть вопросы про Сервис, нужно отозвать заявку, удалить данные или просто обсудить идею. Мы открыты и читаем всё.</p>
+
+    <a class="contact-card" href="https://t.me/rizanna_alexeevna" target="_blank" rel="noopener">
+      <div class="ico">✈</div>
+      <div>
+        <div class="label">Telegram (предпочтительно)</div>
+        <div class="val">@rizanna_alexeevna</div>
+      </div>
+    </a>
+
+    <a class="contact-card" id="emailCard" href="#" rel="noopener">
+      <div class="ico">✉</div>
+      <div>
+        <div class="label">Электронная почта</div>
+        <div class="val" id="emailVal">загрузка…</div>
+      </div>
+    </a>
+    <script>
+      // Email собирается из частей, чтобы обходить автоматическую обфускацию
+      // (Cloudflare Email Obfuscation и т.п.) и спам-сканеры.
+      (function(){
+        var u = ['jirilkin','arsen'].join('');
+        var d = ['gmail','com'].join('.');
+        var addr = u + '\u0040' + d;
+        var card = document.getElementById('emailCard');
+        var val  = document.getElementById('emailVal');
+        if (card) card.href = 'mailto:' + addr;
+        if (val)  val.textContent = addr;
+      })();
+    </script>
+
+    <h2>По каким вопросам пишут чаще всего</h2>
+    <ul>
+      <li><b>Хочу удалить мою заявку.</b> Напишите в Telegram или на почту — удалим в течение рабочего дня.</li>
+      <li><b>Когда запуск?</b> Лето 2026. Точную дату мы пришлём всем, кто оставил заявку, за неделю до старта.</li>
+      <li><b>Как изменить контакт в заявке?</b> Напишите нам — обновим запись.</li>
+      <li><b>Сотрудничество, партнёрство, медиа.</b> Пишите на почту — ответит основатель проекта.</li>
+    </ul>
+
+    <h2>Юридические сведения</h2>
+    <p>Проект «Секретарь-бот» находится на стадии pre-launch. После регистрации юридического лица здесь появятся ИНН, ОГРН и почтовый адрес. До этого момента все обращения принимаются по&nbsp;контактам выше.</p>
+
+  </main>
+
+  <footer class="legal-footer">
+    <div>© 2026 Секретарь-бот</div>
+    <div class="links">
+      <a href="privacy.html">Конфиденциальность</a>
+      <a href="terms.html">Условия</a>
+      <a href="contacts.html">Связаться</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
