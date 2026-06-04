@@ -973,6 +973,31 @@
       gap:16px 20px;
     }
   }
+
+  /* ---------- LANG SWITCH ---------- */
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-switch{
+    display:inline-flex;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:999px;padding:3px;gap:2px;flex-shrink:0;
+  }
+  .lang-btn{
+    background:transparent;border:none;cursor:pointer;font-family:inherit;
+    padding:6px 11px;border-radius:999px;color:var(--ink-2);font-size:13px;font-weight:600;
+    display:flex;align-items:center;gap:5px;
+    transition:all .2s ease;white-space:nowrap;
+  }
+  .lang-btn.active{background:var(--ink);color:var(--paper)}
+  .lang-btn:not(.active):hover{color:var(--ink)}
+  .lang-flag{font-size:14px;line-height:1}
+  /* On mobile: hide nav-links but keep lang-switch visible */
+  @media (max-width: 960px){
+    .nav-right{gap:8px}
+  }
+  @media (max-width: 768px){
+    .lang-btn{padding:5px 9px;font-size:12px}
+  }
+  /* English: use standard double-quotes on FAQ */
+  html[lang="en"] .faq q{quotes:'"' '"'}
 </style>
 </head>
 <body>
@@ -982,32 +1007,38 @@
   <nav class="top">
     <div class="logo">
       <div class="dot">С</div>
-      <span>Секретарь&nbsp;·&nbsp;bot</span>
+      <span data-t="logoText">Секретарь&nbsp;·&nbsp;bot</span>
     </div>
     <div class="nav-links">
-      <a href="#problem">Проблема</a>
-      <a href="#how">Как работает</a>
-      <a href="#who">Для&nbsp;кого</a>
-      <a href="#faq">FAQ</a>
+      <a href="#problem" data-t="navProblem">Проблема</a>
+      <a href="#how"     data-t="navHow">Как работает</a>
+      <a href="#who"     data-t="navWho">Для&nbsp;кого</a>
+      <a href="#faq"     data-t="navFaq">FAQ</a>
     </div>
-    <a class="btn btn-primary nav-cta" href="#cta">
-      <span class="nav-cta-full">Оставить заявку</span>
-      <span class="nav-cta-short">Заявка</span>
-      <span class="arrow">→</span>
-    </a>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')"><span class="lang-flag">&#x1F1F7;&#x1F1FA;</span> RU</button>
+        <button class="lang-btn"        data-lang="en" onclick="setLang('en')"><span class="lang-flag">&#x1F1EC;&#x1F1E7;</span> EN</button>
+      </div>
+      <a class="btn btn-primary nav-cta" href="#cta">
+        <span class="nav-cta-full" data-t="navCtaFull">Оставить заявку</span>
+        <span class="nav-cta-short" data-t="navCtaShort">Заявка</span>
+        <span class="arrow">&#8594;</span>
+      </a>
+    </div>
   </nav>
 
 <!-- ============ HERO ============ -->
 <section class="hero" style="border-top:none;padding-top:48px">
   <div class="hero-text">
     <div class="hero-eyebrow-row">
-      <div class="eyebrow"><span class="pulse"></span> Новая функция &middot; подключается прямо&nbsp;в&nbsp;Telegram</div>
+      <div class="eyebrow" data-t="eyebrow"><span class="pulse"></span> Новая функция &middot; подключается прямо&nbsp;в&nbsp;Telegram</div>
     </div>
 
-    <div class="aud-switch" role="tablist" aria-label="Аудитория">
-      <button class="active" data-aud="master" onclick="switchAud('master')">Я мастер услуг</button>
-      <button data-aud="tutor" onclick="switchAud('tutor')">Я репетитор / эксперт</button>
-      <button data-aud="biz" onclick="switchAud('biz')">У меня малый бизнес</button>
+    <div class="aud-switch" id="audSwitch" role="tablist" aria-label="Аудитория">
+      <button class="active" data-aud="master" data-t="audMaster" onclick="switchAud('master')">Я мастер услуг</button>
+      <button data-aud="tutor" data-t="audTutor" onclick="switchAud('tutor')">Я репетитор / эксперт</button>
+      <button data-aud="biz" data-t="audBiz" onclick="switchAud('biz')">У меня малый бизнес</button>
     </div>
 
     <h1 id="h1-text">
@@ -1017,15 +1048,15 @@
       Виртуальный секретарь подключается к твоему Telegram и&nbsp;отвечает клиентам от&nbsp;твоего имени — ценами, расписанием, условиями. Они видят твоё имя и аватар. Ни одна заявка не пропадает.
     </p>
     <div class="hero-ctas">
-      <a class="btn btn-coral" href="#cta">Оставить заявку <span class="arrow">→</span></a>
-      <a class="btn btn-ghost" href="#how">Как это работает</a>
+      <a class="btn btn-coral" href="#cta" data-t="heroCta1">Оставить заявку <span class="arrow">&#8594;</span></a>
+      <a class="btn btn-ghost" href="#how" data-t="heroCta2">Как это работает</a>
     </div>
     <div class="hero-meta">
-      <span>✓&nbsp; Подключается за 5&nbsp;минут</span>
+      <span data-t="heroMeta0">✓&nbsp; Подключается за 5&nbsp;минут</span>
       <span class="sep"></span>
-      <span>✓&nbsp; Работает в твоём&nbsp;Telegram</span>
+      <span data-t="heroMeta1">✓&nbsp; Работает в твоём&nbsp;Telegram</span>
       <span class="sep"></span>
-      <span>✓&nbsp; Уже используют тысячи специалистов</span>
+      <span data-t="heroMeta2">✓&nbsp; Уже используют тысячи специалистов</span>
     </div>
   </div>
 
@@ -1036,7 +1067,7 @@
           <div class="avatar" id="hero-av">М</div>
           <div class="who">
             <div class="name" id="hero-name">Мария&nbsp;· Маникюр</div>
-            <div class="status">в сети</div>
+            <div class="status" data-t="phoneStatus">в сети</div>
           </div>
           <div class="ico">⋯</div>
         </div>
@@ -1051,7 +1082,7 @@
           <div class="typing"><span></span><span></span><span></span></div>
         </div>
         <div class="phone-input">
-          <div class="field">Написать сообщение…</div>
+          <div class="field" data-t="phoneField">Написать сообщение…</div>
           <div class="send">➤</div>
         </div>
       </div>
@@ -1066,51 +1097,51 @@
 <section class="problem" id="problem">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">/ 01 · сколько ты теряешь</div>
-      <h2>Каждая <em>непрочитанная заявка</em> — это деньги, которые забрал кто&#8209;то&nbsp;другой.</h2>
-      <p class="sub">Пока ты занят, спишь или ведёшь другого клиента — запросы в Telegram остывают. Чем дольше пауза — тем меньше шанс, что клиент придёт именно к&nbsp;тебе. Большинство решает в первые 10&nbsp;минут.</p>
+      <div class="kicker" data-t="probKicker">/ 01 · сколько ты теряешь</div>
+      <h2 data-t="probH2">Каждая <em>непрочитанная заявка</em> — это деньги, которые забрал кто&#8209;то&nbsp;другой.</h2>
+      <p class="sub" data-t="probSub">Пока ты занят, спишь или ведёшь другого клиента — запросы в Telegram остывают. Чем дольше пауза — тем меньше шанс, что клиент придёт именно к&nbsp;тебе. Большинство решает в первые 10&nbsp;минут.</p>
     </div>
 
     <div class="loss-grid">
       <div class="loss-card">
-        <div class="scenario">Сценарий 01</div>
-        <h3>Клиент написал в 23:00. Ты ответил утром.</h3>
+        <div class="scenario" data-t="loss0Sc">Сценарий 01</div>
+        <h3 data-t="loss0H3">Клиент написал в 23:00. Ты ответил утром.</h3>
         <div class="arrow-down">↓</div>
-        <p class="outcome">За ночь он успел написать ещё <b>3 конкурентам</b>. Утром выбирает того, кто ответил первым с адекватной ценой.</p>
+        <p class="outcome" data-t="loss0Out">За ночь он успел написать ещё <b>3 конкурентам</b>. Утром выбирает того, кто ответил первым с адекватной ценой.</p>
         <div class="metric">
-          <div class="big">−72%</div>
-          <div class="lbl">шанс, что выберут&nbsp;тебя</div>
+          <div class="big" data-t="loss0Big">−72%</div>
+          <div class="lbl" data-t="loss0Lbl">шанс, что выберут&nbsp;тебя</div>
         </div>
       </div>
 
       <div class="loss-card">
-        <div class="scenario">Сценарий 02</div>
-        <h3>Ты ведёшь одного клиента. Пишут ещё трое.</h3>
+        <div class="scenario" data-t="loss1Sc">Сценарий 02</div>
+        <h3 data-t="loss1H3">Ты ведёшь одного клиента. Пишут ещё трое.</h3>
         <div class="arrow-down">↓</div>
-        <p class="outcome">Каждый <b>пятый</b> уходит, не дождавшись ответа в течение часа. По выходным — каждый <b>третий</b>.</p>
+        <p class="outcome" data-t="loss1Out">Каждый <b>пятый</b> уходит, не дождавшись ответа в течение часа. По выходным — каждый <b>третий</b>.</p>
         <div class="metric">
-          <div class="big">−20%</div>
-          <div class="lbl">заявок, которые&nbsp;остывают</div>
+          <div class="big" data-t="loss1Big">−20%</div>
+          <div class="lbl" data-t="loss1Lbl">заявок, которые&nbsp;остывают</div>
         </div>
       </div>
 
       <div class="loss-card">
-        <div class="scenario">Сценарий 03</div>
-        <h3>Клиент задаёт цену. Ты молчишь 4&nbsp;часа.</h3>
+        <div class="scenario" data-t="loss2Sc">Сценарий 03</div>
+        <h3 data-t="loss2H3">Клиент задаёт цену. Ты молчишь 4&nbsp;часа.</h3>
         <div class="arrow-down">↓</div>
-        <p class="outcome">Психология ясна: <b>«дорого, поэтому стесняется ответить»</b>. Клиент сам себе доказал, что не подходит — и ушёл.</p>
+        <p class="outcome" data-t="loss2Out">Психология ясна: <b>«дорого, поэтому стесняется ответить»</b>. Клиент сам себе доказал, что не подходит — и ушёл.</p>
         <div class="metric">
-          <div class="big">−43%</div>
-          <div class="lbl">конверсия запроса&nbsp;в&nbsp;запись</div>
+          <div class="big" data-t="loss2Big">−43%</div>
+          <div class="lbl" data-t="loss2Lbl">конверсия запроса&nbsp;в&nbsp;запись</div>
         </div>
       </div>
     </div>
 
     <div class="problem-summary">
-      <p>Если ты получаешь <b style="color:var(--coral)">20 запросов в неделю</b> и теряешь хотя бы каждого пятого — это <b style="color:var(--coral)">~16 упущенных клиентов в месяц.</b> При среднем чеке 2&nbsp;500&nbsp;₽ — это 40&nbsp;000&nbsp;₽, которые просто прошли мимо. Каждый. Месяц.</p>
+      <p data-t="probSumP">Если ты получаешь <b style="color:var(--coral)">20 запросов в неделю</b> и теряешь хотя бы каждого пятого — это <b style="color:var(--coral)">~16 упущенных клиентов в месяц.</b> При среднем чеке 2&nbsp;500&nbsp;₽ — это 40&nbsp;000&nbsp;₽, которые просто прошли мимо. Каждый. Месяц.</p>
       <div class="stat">
-        <b>40 000&nbsp;₽</b>
-        тихо уходит каждый месяц
+        <b data-t="probStatBig">40 000&nbsp;₽</b>
+        <span data-t="probStatLbl">тихо уходит каждый месяц</span>
       </div>
     </div>
   </div>
@@ -1121,30 +1152,30 @@
   <div class="wrap">
     <div class="solution-grid">
       <div>
-        <div class="kicker">/ 02 · решение</div>
-        <h2>Бот закрывает <em>типовые вопросы</em> и ведёт первичную обработку клиентов.</h2>
-        <p class="sub">Подключается прямо в твоём Telegram — без новых приложений и сложных настроек. Один раз рассказал — отвечает столько, сколько нужно. Похожие AI-секретари уже работают у&nbsp;тысяч специалистов.</p>
+        <div class="kicker" data-t="solKicker">/ 02 · решение</div>
+        <h2 data-t="solH2">Бот закрывает <em>типовые вопросы</em> и ведёт первичную обработку клиентов.</h2>
+        <p class="sub" data-t="solSub">Подключается прямо в твоём Telegram — без новых приложений и сложных настроек. Один раз рассказал — отвечает столько, сколько нужно. Похожие AI-секретари уже работают у&nbsp;тысяч специалистов.</p>
 
         <div class="solution-points">
           <div class="sp">
             <div class="num">01</div>
-            <p><b>Подключение за 5 минут — через Telegram.</b> Никаких приложений, личных кабинетов и интеграций. Просто запускаешь чат с ботом и рассказываешь о себе.</p>
+            <p data-t="sp0"><b>Подключение за 5 минут — через Telegram.</b> Никаких приложений, личных кабинетов и интеграций. Просто запускаешь чат с ботом и рассказываешь о себе.</p>
           </div>
           <div class="sp">
             <div class="num">02</div>
-            <p><b>Закрывает типовые вопросы.</b> Цены, расписание, условия, адрес, как записаться — клиент получает ответ сразу. Ты подключаешься только к «горячим» заявкам.</p>
+            <p data-t="sp1"><b>Закрывает типовые вопросы.</b> Цены, расписание, условия, адрес, как записаться — клиент получает ответ сразу. Ты подключаешься только к «горячим» заявкам.</p>
           </div>
           <div class="sp">
             <div class="num">03</div>
-            <p><b>От твоего имени.</b> Клиент видит твоё имя и аватар. Бот опирается только на то, что ты рассказал — не выдумывает. Не знает — пингует тебя.</p>
+            <p data-t="sp2"><b>От твоего имени.</b> Клиент видит твоё имя и аватар. Бот опирается только на то, что ты рассказал — не выдумывает. Не знает — пингует тебя.</p>
           </div>
           <div class="sp">
             <div class="num">04</div>
-            <p><b>Экономит часы каждый день.</b> Перестаёшь отвечать на «сколько стоит» и «когда свободно» по двадцать раз в день. Время освобождается на работу и жизнь.</p>
+            <p data-t="sp3"><b>Экономит часы каждый день.</b> Перестаёшь отвечать на «сколько стоит» и «когда свободно» по двадцать раз в день. Время освобождается на работу и жизнь.</p>
           </div>
           <div class="sp">
             <div class="num">05</div>
-            <p><b>Личные чаты он не&nbsp;видит. Совсем.</b> Бот не имеет доступа к твоей переписке с друзьями, семьёй и старым клиентам. Только новые входящие — и только в течение 24&nbsp;часов после получения. Всё остальное — закрыто наглухо.</p>
+            <p data-t="sp4"><b>Личные чаты он не&nbsp;видит. Совсем.</b> Бот не имеет доступа к твоей переписке с друзьями, семьёй и старым клиентам. Только новые входящие — и только в течение 24&nbsp;часов после получения. Всё остальное — закрыто наглухо.</p>
           </div>
         </div>
       </div>
@@ -1152,26 +1183,26 @@
       <div class="twin">
         <div class="twin-card">
           <div class="head">
-            <div class="av" style="background:var(--mute)">К</div>
-            <div class="name">Клиент</div>
-            <div class="tag">обычно</div>
+            <div class="av" style="background:var(--mute)" data-t="twinClientAv">К</div>
+            <div class="name" data-t="twinClient">Клиент</div>
+            <div class="tag" data-t="twinTagNormal">обычно</div>
           </div>
-          <div class="mini them">«Сколько стоит?»</div>
-          <div class="mini them" style="opacity:.7">«Алло?»</div>
-          <div class="mini them" style="opacity:.5">«?»</div>
-          <div class="time">Ответ через&nbsp;<b>4 часа</b></div>
+          <div class="mini them" data-t="twinQ0">«Сколько стоит?»</div>
+          <div class="mini them" style="opacity:.7" data-t="twinQ1">«Алло?»</div>
+          <div class="mini them" style="opacity:.5" data-t="twinQ2">«?»</div>
+          <div class="time" data-t="twinTimeSlow">Ответ через&nbsp;<b>4 часа</b></div>
         </div>
 
         <div class="twin-card bot">
           <div class="head">
             <div class="av">М</div>
             <div class="name">Мария</div>
-            <div class="tag">с ботом</div>
+            <div class="tag" data-t="twinTagBot">с ботом</div>
           </div>
-          <div class="mini them">«Сколько стоит?»</div>
-          <div class="mini me">2 500 ₽ с однотонным гель-лаком, держится 3-4 недели 🙂</div>
-          <div class="mini them">«Беру!»</div>
-          <div class="time">Ответ через&nbsp;<b>3 секунды</b></div>
+          <div class="mini them" data-t="twinQ0b">«Сколько стоит?»</div>
+          <div class="mini me" data-t="twinReply">2 500 ₽ с однотонным гель-лаком, держится 3-4 недели 🙂</div>
+          <div class="mini them" data-t="twinBuy">«Беру!»</div>
+          <div class="time" data-t="twinTimeFast">Ответ через&nbsp;<b>3 секунды</b></div>
         </div>
 
         <div class="vs">VS</div>
@@ -1184,51 +1215,51 @@
 <section id="how">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">/ 03 · как это работает</div>
-      <h2>Три шага. <em>Без форм, без таблиц,</em> без техподдержки.</h2>
-      <p class="sub">Ты не программируешь бота — ты с ним разговариваешь. Так же, как объяснил бы новому помощнику.</p>
+      <div class="kicker" data-t="howKicker">/ 03 · как это работает</div>
+      <h2 data-t="howH2">Три шага. <em>Без форм, без таблиц,</em> без техподдержки.</h2>
+      <p class="sub" data-t="howSub">Ты не программируешь бота — ты с ним разговариваешь. Так же, как объяснил бы новому помощнику.</p>
     </div>
 
     <div class="how-steps">
       <!-- STEP 1 -->
       <div class="step">
-        <div class="step-num">ШАГ&nbsp;01 · ~15 МИН</div>
-        <h3>Расскажи, что делаешь — в обычном чате</h3>
-        <p>Бот задаёт простые вопросы. Ты отвечаешь как живой человек. Никаких форм, никаких полей.</p>
+        <div class="step-num" data-t="step0Num">ШАГ&nbsp;01 · ~15 МИН</div>
+        <h3 data-t="step0H3">Расскажи, что делаешь — в обычном чате</h3>
+        <p data-t="step0P">Бот задаёт простые вопросы. Ты отвечаешь как живой человек. Никаких форм, никаких полей.</p>
         <div class="demo">
-          <div class="row"><div class="av bot">Б</div><div class="msg">Расскажи, чем ты занимаешься?</div></div>
-          <div class="row"><div class="av you">Я</div><div class="msg you">онлайн-школа английского, индивидуально и в мини-группах до 4 человек</div></div>
-          <div class="row"><div class="av bot">Б</div><div class="msg">Понял. А по форматам и ценам что сказать?</div></div>
-          <div class="row"><div class="av you">Я</div><div class="msg you">индив 2500/урок, группа 1200/урок. пробный 500₽</div></div>
-          <div class="row typing-row">бот запоминает…</div>
+          <div class="row"><div class="av bot" data-t="s0av0">Б</div><div class="msg" data-t="s0d0">Расскажи, чем ты занимаешься?</div></div>
+          <div class="row"><div class="av you" data-t="s0av1">Я</div><div class="msg you" data-t="s0d1">онлайн-школа английского, индивидуально и в мини-группах до 4 человек</div></div>
+          <div class="row"><div class="av bot" data-t="s0av2">Б</div><div class="msg" data-t="s0d2">Понял. А по форматам и ценам что сказать?</div></div>
+          <div class="row"><div class="av you" data-t="s0av3">Я</div><div class="msg you" data-t="s0d3">индив 2500/урок, группа 1200/урок. пробный 500₽</div></div>
+          <div class="row typing-row" data-t="s0typing">бот запоминает…</div>
         </div>
       </div>
 
       <!-- STEP 2 -->
       <div class="step">
-        <div class="step-num">ШАГ&nbsp;02 · ~5 МИН</div>
-        <h3>Проверь — бот сыграет роль клиента</h3>
-        <p>Перед запуском бот превращается в придирчивого клиента и задаёт типовые вопросы. Ты видишь его ответы и&nbsp;правишь, если что-то не так.</p>
+        <div class="step-num" data-t="step1Num">ШАГ&nbsp;02 · ~5 МИН</div>
+        <h3 data-t="step1H3">Проверь — бот сыграет роль клиента</h3>
+        <p data-t="step1P">Перед запуском бот превращается в придирчивого клиента и задаёт типовые вопросы. Ты видишь его ответы и&nbsp;правишь, если что-то не так.</p>
         <div class="demo">
-          <div class="row"><div class="av bot">Б</div><div class="msg"><i>Играю клиента:</i> «А выезд на съёмку в офис делаете?»</div></div>
-          <div class="row"><div class="av bot">Б</div><div class="msg"><i>Я бы ответил:</i> «Да, по Москве в пределах МКАД — бесплатно. За МКАД — 50₽/км. Хорошо?»</div></div>
-          <div class="row"><div class="av you">Я</div><div class="msg you">👍 норм</div></div>
-          <div class="row"><div class="av you">Я</div><div class="msg you">только сейчас 70₽/км, не 50</div></div>
-          <div class="row typing-row">правка сохранена ✓</div>
+          <div class="row"><div class="av bot" data-t="s1av0">Б</div><div class="msg" data-t="s1d0"><i>Играю клиента:</i> «А выезд на съёмку в офис делаете?»</div></div>
+          <div class="row"><div class="av bot" data-t="s1av1">Б</div><div class="msg" data-t="s1d1"><i>Я бы ответил:</i> «Да, по Москве в пределах МКАД — бесплатно. За МКАД — 50₽/км. Хорошо?»</div></div>
+          <div class="row"><div class="av you" data-t="s1av2">Я</div><div class="msg you" data-t="s1d2">👍 норм</div></div>
+          <div class="row"><div class="av you" data-t="s1av3">Я</div><div class="msg you" data-t="s1d3">только сейчас 70₽/км, не 50</div></div>
+          <div class="row typing-row" data-t="s1typing">правка сохранена ✓</div>
         </div>
       </div>
 
       <!-- STEP 3 -->
       <div class="step">
-        <div class="step-num">ШАГ&nbsp;03 · 24/7</div>
-        <h3>Бот отвечает. Ты занимаешься делом.</h3>
-        <p>Клиенты пишут как обычно — в твой Telegram. Если бот не уверен — пингует тебя.</p>
+        <div class="step-num" data-t="step2Num">ШАГ&nbsp;03 · 24/7</div>
+        <h3 data-t="step2H3">Бот отвечает. Ты занимаешься делом.</h3>
+        <p data-t="step2P">Клиенты пишут как обычно — в твой Telegram. Если бот не уверен — пингует тебя.</p>
         <div class="demo">
-          <div class="row"><div class="av client">К</div><div class="msg">Вы работаете с подростками или только со взрослыми?</div></div>
-          <div class="row"><div class="av you">Я</div><div class="msg you">сейчас уточню и отвечу, пара минут 🙏</div></div>
+          <div class="row"><div class="av client" data-t="s2av0">К</div><div class="msg" data-t="s2d0">Вы работаете с подростками или только со взрослыми?</div></div>
+          <div class="row"><div class="av you" data-t="s2av1">Я</div><div class="msg you" data-t="s2d1">сейчас уточню и отвечу, пара минут 🙏</div></div>
           <div class="notify">
             <span class="bell">🔔</span>
-            <span>Клиент <b>Алексей М.</b> спросил про работу с подростками. Я взял паузу — ответь, когда удобно.</span>
+            <span data-t="s2bell">Клиент <b>Алексей М.</b> спросил про работу с подростками. Я взял паузу — ответь, когда удобно.</span>
           </div>
         </div>
       </div>
@@ -1240,43 +1271,43 @@
 <section class="for-who" id="who">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">/ 04 · для кого</div>
-      <h2>Если Telegram — твой <em>главный канал</em>, бот окупится за неделю.</h2>
+      <div class="kicker" data-t="whoKicker">/ 04 · для кого</div>
+      <h2 data-t="whoH2">Если Telegram — твой <em>главный канал</em>, бот окупится за неделю.</h2>
     </div>
 
     <div class="who-grid">
       <div class="who-card">
         <div class="icon">💅</div>
-        <h3>Мастера и&nbsp;специалисты</h3>
-        <p>Перестаньте отвечать на вопросы о ценах и записи между клиентами. Бот возьмёт это на себя.</p>
+        <h3 data-t="who0H3">Мастера и&nbsp;специалисты</h3>
+        <p data-t="who0P">Перестаньте отвечать на вопросы о ценах и записи между клиентами. Бот возьмёт это на себя.</p>
         <div class="tags">
-          <span class="t">маникюр</span>
-          <span class="t">косметология</span>
-          <span class="t">массаж</span>
-          <span class="t">фотография</span>
+          <span class="t" data-t="who0t0">маникюр</span>
+          <span class="t" data-t="who0t1">косметология</span>
+          <span class="t" data-t="who0t2">массаж</span>
+          <span class="t" data-t="who0t3">фотография</span>
         </div>
       </div>
 
       <div class="who-card">
         <div class="icon">🎓</div>
-        <h3>Онлайн-специалисты</h3>
-        <p>Клиент пишет вопрос — и получает ответ почти сразу, не дожидаясь, пока вы освободитесь между сессиями.</p>
+        <h3 data-t="who1H3">Онлайн-специалисты</h3>
+        <p data-t="who1P">Клиент пишет вопрос — и получает ответ почти сразу, не дожидаясь, пока вы освободитесь между сессиями.</p>
         <div class="tags">
-          <span class="t">репетиторы</span>
-          <span class="t">психологи</span>
-          <span class="t">коучи</span>
-          <span class="t">юристы</span>
+          <span class="t" data-t="who1t0">репетиторы</span>
+          <span class="t" data-t="who1t1">психологи</span>
+          <span class="t" data-t="who1t2">коучи</span>
+          <span class="t" data-t="who1t3">юристы</span>
         </div>
       </div>
 
       <div class="who-card">
         <div class="icon">🏢</div>
-        <h3>Малый бизнес</h3>
-        <p>Когда команда не онлайн — Telegram продолжает работать. Базовые вопросы закрываются автоматически.</p>
+        <h3 data-t="who2H3">Малый бизнес</h3>
+        <p data-t="who2P">Когда команда не онлайн — Telegram продолжает работать. Базовые вопросы закрываются автоматически.</p>
         <div class="tags">
-          <span class="t">агентства</span>
-          <span class="t">студии</span>
-          <span class="t">сервисы</span>
+          <span class="t" data-t="who2t0">агентства</span>
+          <span class="t" data-t="who2t1">студии</span>
+          <span class="t" data-t="who2t2">сервисы</span>
         </div>
       </div>
     </div>
@@ -1287,40 +1318,40 @@
 <section class="benefits">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">/ 05 · что получаете</div>
-      <h2>Шесть вещей, которые меняются <em style="color:var(--coral)">с&nbsp;первого&nbsp;дня</em>.</h2>
+      <div class="kicker" data-t="benKicker">/ 05 · что получаете</div>
+      <h2 data-t="benH2">Шесть вещей, которые меняются <em style="color:var(--coral)">с&nbsp;первого&nbsp;дня</em>.</h2>
     </div>
 
     <div class="b-grid" id="benefitsGrid">
       <div class="benefit">
         <div class="check">✓</div>
-        <h4>Ответы 24/7 — даже ночью и в выходные</h4>
-        <p>Клиент написал в 23:47 — получил ответ в 23:47. Никаких «отвечу с утра».</p>
+        <h4 data-t="ben0H4">Ответы 24/7 — даже ночью и в выходные</h4>
+        <p data-t="ben0P">Клиент написал в 23:47 — получил ответ в 23:47. Никаких «отвечу с утра».</p>
       </div>
       <div class="benefit">
         <div class="check">✓</div>
-        <h4>Клиент видит вас, а не бота</h4>
-        <p>Имя, аватар, манера речи — всё ваше. Никакой обезличенности.</p>
+        <h4 data-t="ben1H4">Клиент видит вас, а не бота</h4>
+        <p data-t="ben1P">Имя, аватар, манера речи — всё ваше. Никакой обезличенности.</p>
       </div>
       <div class="benefit">
         <div class="check">✓</div>
-        <h4>Настройка через обычный чат в Telegram</h4>
-        <p>Никаких форм, таблиц или технических знаний. Если вы умеете писать в Telegram — справитесь за&nbsp;5&nbsp;минут.</p>
+        <h4 data-t="ben2H4">Настройка через обычный чат в Telegram</h4>
+        <p data-t="ben2P">Никаких форм, таблиц или технических знаний. Если вы умеете писать в Telegram — справитесь за&nbsp;5&nbsp;минут.</p>
       </div>
       <div class="benefit">
         <div class="check">✓</div>
-        <h4>Закрывает типовые вопросы автоматически</h4>
-        <p>Цены, сроки, условия, адрес, запись — клиент получает ответ сразу. Вы подключаетесь к&nbsp;«горячим» заявкам.</p>
+        <h4 data-t="ben3H4">Закрывает типовые вопросы автоматически</h4>
+        <p data-t="ben3P">Цены, сроки, условия, адрес, запись — клиент получает ответ сразу. Вы подключаетесь к&nbsp;«горячим» заявкам.</p>
       </div>
       <div class="benefit">
         <div class="check">✓</div>
-        <h4>Уведомление, когда бот не знает</h4>
-        <p>Бот не выдумывает. Не знает — берёт паузу и пишет вам. Вы всегда в курсе.</p>
+        <h4 data-t="ben4H4">Уведомление, когда бот не знает</h4>
+        <p data-t="ben4P">Бот не выдумывает. Не знает — берёт паузу и пишет вам. Вы всегда в курсе.</p>
       </div>
       <div class="benefit">
         <div class="check">✓</div>
-        <h4>Полный контроль над данными</h4>
-        <p>Данные <b style="color:var(--paper)">никогда</b> не используются для обучения нейросетей и не передаются третьим лицам. Удалить всю историю можно одной кнопкой.</p>
+        <h4 data-t="ben5H4">Полный контроль над данными</h4>
+        <p data-t="ben5P">Данные <b style="color:var(--paper)">никогда</b> не используются для обучения нейросетей и не передаются третьим лицам. Удалить всю историю можно одной кнопкой.</p>
       </div>
     </div>
     <div class="swipe-dots" id="benefitsDots" aria-hidden="true"></div>
@@ -1331,34 +1362,34 @@
 <section id="faq">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">/ 06 · часто спрашивают</div>
-      <h2>Что обычно <em>смущает</em> в первый раз.</h2>
+      <div class="kicker" data-t="faqKicker">/ 06 · часто спрашивают</div>
+      <h2 data-t="faqH2">Что обычно <em>смущает</em> в первый раз.</h2>
     </div>
 
     <div class="faq-list">
       <div class="faq">
-        <q>А вдруг бот ответит что-то не то?</q>
-        <p>Бот опирается только на то, что ты сам ему написал. Если он не уверен — не молчит и&nbsp;не придумывает, а пишет клиенту «уточню и отвечу» и сразу пингует тебя. Каждый нестандартный случай — под твоим контролем.</p>
+        <q data-t="faq0Q">А вдруг бот ответит что-то не то?</q>
+        <p data-t="faq0P">Бот опирается только на то, что ты сам ему написал. Если он не уверен — не молчит и&nbsp;не придумывает, а пишет клиенту «уточню и отвечу» и сразу пингует тебя. Каждый нестандартный случай — под твоим контролем.</p>
       </div>
       <div class="faq">
-        <q>Клиенты узнают, что это бот?</q>
-        <p>Нет. Они видят твоё имя, твой аватар, твою манеру говорить. Внешне — обычная переписка с тобой. Если хочешь — в настройках можно включить плашку «отвечает помощник».</p>
+        <q data-t="faq1Q">Клиенты узнают, что это бот?</q>
+        <p data-t="faq1P">Нет. Они видят твоё имя, твой аватар, твою манеру говорить. Внешне — обычная переписка с тобой. Если хочешь — в настройках можно включить плашку «отвечает помощник».</p>
       </div>
       <div class="faq">
-        <q>Что с конфиденциальностью?</q>
-        <p>Данные не используются для обучения нейросетей и не передаются третьим лицам. По запросу удаляются в течение 24&nbsp;часов. Кнопка «удалить всё» — в один клик.</p>
+        <q data-t="faq2Q">Что с конфиденциальностью?</q>
+        <p data-t="faq2P">Данные не используются для обучения нейросетей и не передаются третьим лицам. По запросу удаляются в течение 24&nbsp;часов. Кнопка «удалить всё» — в один клик.</p>
       </div>
       <div class="faq">
-        <q>Когда запуск?</q>
-        <p>Открытый запуск — летом&nbsp;2026. Оставь заявку — напишем за неделю до старта, чтобы ты успел подключиться в числе первых.</p>
+        <q data-t="faq3Q">Когда запуск?</q>
+        <p data-t="faq3P">Открытый запуск — летом&nbsp;2026. Оставь заявку — напишем за неделю до старта, чтобы ты успел подключиться в числе первых.</p>
       </div>
       <div class="faq">
-        <q>Сколько это будет стоить?</q>
-        <p>Подписка фиксированная — оплачиваешь раз в месяц и не считаешь токены. Финальная цена будет известна к запуску. Можно отключить в&nbsp;любой&nbsp;момент.</p>
+        <q data-t="faq4Q">Сколько это будет стоить?</q>
+        <p data-t="faq4P">Подписка фиксированная — оплачиваешь раз в месяц и не считаешь токены. Финальная цена будет известна к запуску. Можно отключить в&nbsp;любой&nbsp;момент.</p>
       </div>
       <div class="faq">
-        <q>Можно ли вмешаться в разговор?</q>
-        <p>Конечно. В любой момент пишешь сам — бот замолкает и наблюдает. Когда уходишь из чата — он подключается обратно.</p>
+        <q data-t="faq5Q">Можно ли вмешаться в разговор?</q>
+        <p data-t="faq5P">Конечно. В любой момент пишешь сам — бот замолкает и наблюдает. Когда уходишь из чата — он подключается обратно.</p>
       </div>
     </div>
   </div>
@@ -1370,9 +1401,9 @@
 
     <!-- LEFT: iframe form card -->
     <div class="cta-form-col">
-      <div class="kicker" style="color:rgba(255,255,255,.85);margin-bottom:14px">/ оставить заявку</div>
-      <h2>Оставьте заявку<br>на ранний доступ</h2>
-      <p>Сообщим о запуске первой версии и пригласим в число первых пользователей.</p>
+      <div class="kicker" style="color:rgba(255,255,255,.85);margin-bottom:14px" data-t="ctaKicker">/ оставить заявку</div>
+      <h2 data-t="ctaH2">Оставьте заявку<br>на ранний доступ</h2>
+      <p data-t="ctaP">Сообщим о запуске первой версии и пригласим в число первых пользователей.</p>
 
       <!-- Яндекс Форма — официальный iframe-embed -->
       <div class="yf-embed">
@@ -1389,107 +1420,417 @@
       </div>
 
       <div class="yf-consent">
-        Нажимая кнопку, вы соглашаетесь с
-        <a href="terms.html">Пользовательским соглашением</a>
-        и <a href="privacy.html">Политикой конфиденциальности</a>.
+        <span data-t="ctaConsent">Нажимая кнопку, вы соглашаетесь с <a href="terms.html">Пользовательским соглашением</a> и <a href="privacy.html">Политикой конфиденциальности</a>.</span>
       </div>
     </div>
 
     <!-- RIGHT: feature bullets -->
     <div class="final-side">
-      <div class="item"><div class="k">①</div><div>Подключение <b>прямо в Telegram</b> — без новых приложений</div></div>
-      <div class="item"><div class="k">②</div><div>Бот закрывает <b>типовые вопросы</b> — цены, расписание, условия</div></div>
-      <div class="item"><div class="k">③</div><div>Ты подключаешься только к <b>«горячим»</b> заявкам</div></div>
-      <div class="item"><div class="k">★</div><div>Ни одна заявка <b>не пропадает</b> — даже ночью и в выходные</div></div>
+      <div class="item"><div class="k">①</div><div data-t="ctaItem0">Подключение <b>прямо в Telegram</b> — без новых приложений</div></div>
+      <div class="item"><div class="k">②</div><div data-t="ctaItem1">Бот закрывает <b>типовые вопросы</b> — цены, расписание, условия</div></div>
+      <div class="item"><div class="k">③</div><div data-t="ctaItem2">Ты подключаешься только к <b>«горячим»</b> заявкам</div></div>
+      <div class="item"><div class="k">★</div><div data-t="ctaItem3">Ни одна заявка <b>не пропадает</b> — даже ночью и в выходные</div></div>
     </div>
   </div>
 </div>
 
 <script>
-  // ---------- AUDIENCE SWITCHER ----------
-  const AUD = {
-    master: {
-      h1: 'Пока ты не отвечаешь — <em>клиент пишет конкуренту.</em><br>Личный администратор в&nbsp;<span class="accent">твоём&nbsp;Telegram</span>, отвечает за&nbsp;3&nbsp;секунды.',
-      lede: 'Виртуальный секретарь подключается к твоему Telegram и&nbsp;отвечает клиентам от&nbsp;твоего имени — ценами, расписанием, условиями. Ни одна заявка не пропадает.',
-      av: 'М',
-      name: 'Мария&nbsp;· Маникюр',
-      f1: 'Ты в этот момент — спишь',
-      f2: '+1 клиент записан',
-      chat: [
-        ['them', 'Здравствуйте! Сколько стоит маникюр с покрытием?', '23:47'],
-        ['me', 'Здравствуйте 🙂 Маникюр с гель-лаком — 2&nbsp;500 ₽, держится 3-4&nbsp;недели. С дизайном — от&nbsp;3&nbsp;000 ₽.', '23:47&nbsp;· прочитано', true],
-        ['them', 'А завтра в субботу есть время?', '23:48'],
-        ['me', 'Да, завтра свободно в 11:00, 14:30 и 17:00. На какое время записать?', '23:48&nbsp;· прочитано'],
-        ['them', 'Давайте на 14:30 🙏', '23:48'],
-      ],
-    },
-    tutor: {
-      h1: 'Клиент в поиске преподавателя — <em>выбирает за 5 минут.</em><br>Помощник отвечает <span class="accent">твоими словами</span> и записывает на пробный.',
-      lede: 'Пока ты ведёшь урок, клиент пишет: «Сколько урок? Какая методика? Когда можно пробный?» Секретарь отвечает сразу и бронирует пробный урок, пока клиент горячий.',
-      av: 'Д',
-      name: 'Дмитрий&nbsp;· Английский',
-      f1: 'Ты в этот момент — ведёшь урок',
-      f2: '+1 пробный забронирован',
-      chat: [
-        ['them', 'Здравствуйте, ищу преподавателя английского ребёнку, 12 лет. Сколько?', '19:14'],
-        ['me', 'Добрый вечер 😊 Индивидуально — 2&nbsp;500&nbsp;₽/урок (60 мин). Пробный — 500&nbsp;₽, оценим уровень. Готовы?', '19:14&nbsp;· прочитано', true],
-        ['them', 'Да, хотелось бы в эти выходные.', '19:15'],
-        ['me', 'Суббота 11:00 или воскресенье 17:00 — что удобнее?', '19:15&nbsp;· прочитано'],
-        ['them', 'Суббота в 11:00, спасибо!', '19:15'],
-      ],
-    },
-    biz: {
-      h1: 'Когда команда не онлайн — <em>Telegram продолжает продавать.</em><br>Администратор ведёт <span class="accent">первичный контакт</span> 24/7.',
-      lede: 'Клиенты пишут в ваш рабочий Telegram. Секретарь отвечает на базовые вопросы, брифует по сценарию и передаёт вам только &laquo;горячие&raquo; заявки. Команда перестаёт тратить часы на «сколько стоит».',
-      av: 'A',
-      name: 'Atelier&nbsp;· Студия',
-      f1: 'Суббота, 22:14 — все выходные',
-      f2: '+1 заявка в CRM',
-      chat: [
-        ['them', 'Добрый вечер! Интересует редизайн лого для кафе. Почём и сроки?', '22:14'],
-        ['me', 'Здравствуйте 👋 Редизайн лого — от 35&nbsp;000&nbsp;₽, срок 7–10 дней. Для точной оценки нужен бриф — заполним вместе?', '22:14&nbsp;· прочитано', true],
-        ['them', 'Да, давайте.', '22:15'],
-        ['me', '5 коротких вопросов. Какое название кафе и в каком городе?', '22:15&nbsp;· прочитано'],
-        ['them', '«Pond», Санкт-Петербург.', '22:16'],
-      ],
-    },
-  };
+// ═══════════════════════════════════════════════════════
+//  TRANSLATIONS
+// ═══════════════════════════════════════════════════════
+const T = {
+ru:{
+  pageTitle:'Секретарь-бот — отвечает клиентам в Telegram твоими словами',
+  logoText:'Секретарь&#160;&#183;&#160;bot',
+  navProblem:'Проблема', navHow:'Как работает', navWho:'Для&#160;кого', navFaq:'FAQ',
+  navCtaFull:'Оставить заявку', navCtaShort:'Заявка',
+  eyebrow:'Новая функция &middot; подключается прямо&#160;в&#160;Telegram',
+  audMaster:'Я мастер услуг', audTutor:'Я репетитор / эксперт', audBiz:'У меня малый бизнес',
+  heroCta1:'Оставить заявку <span class="arrow">&#8594;</span>',
+  heroCta2:'Как это работает',
+  heroMeta0:'&#10003;&#160; Подключается за 5&#160;минут',
+  heroMeta1:'&#10003;&#160; Работает в твоём&#160;Telegram',
+  heroMeta2:'&#10003;&#160; Уже используют тысячи специалистов',
+  phoneStatus:'в сети', phoneField:'Написать сообщение…',
+  probKicker:'/ 01 · сколько ты теряешь',
+  probH2:'Каждая <em>непрочитанная заявка</em> — это деньги, которые забрал кто&#8209;то&#160;другой.',
+  probSub:'Пока ты занят, спишь или ведёшь другого клиента — запросы в Telegram остывают. Чем дольше пауза — тем меньше шанс, что клиент придёт именно к&#160;тебе. Большинство решает в первые 10&#160;минут.',
+  loss0Sc:'Сценарий 01', loss0H3:'Клиент написал в 23:00. Ты ответил утром.',
+  loss0Out:'За ночь он успел написать ещё <b>3 конкурентам</b>. Утром выбирает того, кто ответил первым с адекватной ценой.',
+  loss0Big:'&#8722;72%', loss0Lbl:'шанс, что выберут&#160;тебя',
+  loss1Sc:'Сценарий 02', loss1H3:'Ты ведёшь одного клиента. Пишут ещё трое.',
+  loss1Out:'Каждый <b>пятый</b> уходит, не дождавшись ответа в течение часа. По выходным — каждый <b>третий</b>.',
+  loss1Big:'&#8722;20%', loss1Lbl:'заявок, которые&#160;остывают',
+  loss2Sc:'Сценарий 03', loss2H3:'Клиент задаёт цену. Ты молчишь 4&#160;часа.',
+  loss2Out:'Психология ясна: <b>«дорого, поэтому стесняется ответить»</b>. Клиент сам себе доказал, что не подходит — и ушёл.',
+  loss2Big:'&#8722;43%', loss2Lbl:'конверсия запроса&#160;в&#160;запись',
+  probSumP:'Если ты получаешь <b style="color:var(--coral)">20 запросов в неделю</b> и теряешь хотя бы каждого пятого — это <b style="color:var(--coral)">~16 упущенных клиентов в месяц.</b> При среднем чеке 2&#160;500&#160;₽ — это 40&#160;000&#160;₽, которые просто прошли мимо. Каждый. Месяц.',
+  probStatBig:'40 000&#160;₽', probStatLbl:'тихо уходит каждый месяц',
+  solKicker:'/ 02 · решение',
+  solH2:'Бот закрывает <em>типовые вопросы</em> и ведёт первичную обработку клиентов.',
+  solSub:'Подключается прямо в твоём Telegram — без новых приложений и сложных настроек. Один раз рассказал — отвечает столько, сколько нужно. Похожие AI-секретари уже работают у&#160;тысяч специалистов.',
+  sp0:'<b>Подключение за 5 минут — через Telegram.</b> Никаких приложений, личных кабинетов и интеграций. Просто запускаешь чат с ботом и рассказываешь о себе.',
+  sp1:'<b>Закрывает типовые вопросы.</b> Цены, расписание, условия, адрес, как записаться — клиент получает ответ сразу. Ты подключаешься только к «горячим» заявкам.',
+  sp2:'<b>От твоего имени.</b> Клиент видит твоё имя и аватар. Бот опирается только на то, что ты рассказал — не выдумывает. Не знает — пингует тебя.',
+  sp3:'<b>Экономит часы каждый день.</b> Перестаёшь отвечать на «сколько стоит» и «когда свободно» по двадцать раз в день. Время освобождается на работу и жизнь.',
+  sp4:'<b>Личные чаты он не&#160;видит. Совсем.</b> Бот не имеет доступа к твоей переписке с друзьями, семьёй и старым клиентам. Только новые входящие — и только в течение 24&#160;часов после получения. Всё остальное — закрыто наглухо.',
+  twinClientAv:'К', twinClient:'Клиент', twinTagNormal:'обычно', twinTagBot:'с ботом',
+  twinQ0:'«Сколько стоит?»', twinQ1:'«Алло?»', twinQ2:'«?»',
+  twinQ0b:'«Сколько стоит?»',
+  twinReply:'2 500 ₽ с однотонным гель-лаком, держится 3-4 недели 🙂',
+  twinBuy:'«Беру!»',
+  twinTimeSlow:'Ответ через&#160;<b>4 часа</b>', twinTimeFast:'Ответ через&#160;<b>3 секунды</b>',
+  howKicker:'/ 03 · как это работает',
+  howH2:'Три шага. <em>Без форм, без таблиц,</em> без техподдержки.',
+  howSub:'Ты не программируешь бота — ты с ним разговариваешь. Так же, как объяснил бы новому помощнику.',
+  step0Num:'ШАГ&#160;01 · ~15 МИН', step0H3:'Расскажи, что делаешь — в обычном чате',
+  step0P:'Бот задаёт простые вопросы. Ты отвечаешь как живой человек. Никаких форм, никаких полей.',
+  s0av0:'Б', s0d0:'Расскажи, чем ты занимаешься?',
+  s0av1:'Я', s0d1:'онлайн-школа английского, индивидуально и в мини-группах до 4 человек',
+  s0av2:'Б', s0d2:'Понял. А по форматам и ценам что сказать?',
+  s0av3:'Я', s0d3:'индив 2500/урок, группа 1200/урок. пробный 500₽',
+  s0typing:'бот запоминает…',
+  step1Num:'ШАГ&#160;02 · ~5 МИН', step1H3:'Проверь — бот сыграет роль клиента',
+  step1P:'Перед запуском бот превращается в придирчивого клиента и задаёт типовые вопросы. Ты видишь его ответы и&#160;правишь, если что-то не так.',
+  s1av0:'Б', s1d0:'<i>Играю клиента:</i> «А выезд на съёмку в офис делаете?»',
+  s1av1:'Б', s1d1:'<i>Я бы ответил:</i> «Да, по Москве в пределах МКАД — бесплатно. За МКАД — 50₽/км. Хорошо?»',
+  s1av2:'Я', s1d2:'👍 норм',
+  s1av3:'Я', s1d3:'только сейчас 70₽/км, не 50',
+  s1typing:'правка сохранена ✓',
+  step2Num:'ШАГ&#160;03 · 24/7', step2H3:'Бот отвечает. Ты занимаешься делом.',
+  step2P:'Клиенты пишут как обычно — в твой Telegram. Если бот не уверен — пингует тебя.',
+  s2av0:'К', s2d0:'Вы работаете с подростками или только со взрослыми?',
+  s2av1:'Я', s2d1:'сейчас уточню и отвечу, пара минут 🙏',
+  s2bell:'Клиент <b>Алексей М.</b> спросил про работу с подростками. Я взял паузу — ответь, когда удобно.',
+  whoKicker:'/ 04 · для кого',
+  whoH2:'Если Telegram — твой <em>главный канал</em>, бот окупится за неделю.',
+  who0H3:'Мастера и&#160;специалисты',
+  who0P:'Перестаньте отвечать на вопросы о ценах и записи между клиентами. Бот возьмёт это на себя.',
+  who0t0:'маникюр', who0t1:'косметология', who0t2:'массаж', who0t3:'фотография',
+  who1H3:'Онлайн-специалисты',
+  who1P:'Клиент пишет вопрос — и получает ответ почти сразу, не дожидаясь, пока вы освободитесь между сессиями.',
+  who1t0:'репетиторы', who1t1:'психологи', who1t2:'коучи', who1t3:'юристы',
+  who2H3:'Малый бизнес',
+  who2P:'Когда команда не онлайн — Telegram продолжает работать. Базовые вопросы закрываются автоматически.',
+  who2t0:'агентства', who2t1:'студии', who2t2:'сервисы',
+  benKicker:'/ 05 · что получаете',
+  benH2:'Шесть вещей, которые меняются <em style="color:var(--coral)">с&#160;первого&#160;дня</em>.',
+  ben0H4:'Ответы 24/7 — даже ночью и в выходные',
+  ben0P:'Клиент написал в 23:47 — получил ответ в 23:47. Никаких «отвечу с утра».',
+  ben1H4:'Клиент видит вас, а не бота',
+  ben1P:'Имя, аватар, манера речи — всё ваше. Никакой обезличенности.',
+  ben2H4:'Настройка через обычный чат в Telegram',
+  ben2P:'Никаких форм, таблиц или технических знаний. Если вы умеете писать в Telegram — справитесь за&#160;5&#160;минут.',
+  ben3H4:'Закрывает типовые вопросы автоматически',
+  ben3P:'Цены, сроки, условия, адрес, запись — клиент получает ответ сразу. Вы подключаетесь к&#160;«горячим» заявкам.',
+  ben4H4:'Уведомление, когда бот не знает',
+  ben4P:'Бот не выдумывает. Не знает — берёт паузу и пишет вам. Вы всегда в курсе.',
+  ben5H4:'Полный контроль над данными',
+  ben5P:'Данные <b style="color:var(--paper)">никогда</b> не используются для обучения нейросетей и не передаются третьим лицам. Удалить всю историю можно одной кнопкой.',
+  faqKicker:'/ 06 · часто спрашивают',
+  faqH2:'Что обычно <em>смущает</em> в первый раз.',
+  faq0Q:'А вдруг бот ответит что-то не то?',
+  faq0P:'Бот опирается только на то, что ты сам ему написал. Если он не уверен — не молчит и&#160;не придумывает, а пишет клиенту «уточню и отвечу» и сразу пингует тебя. Каждый нестандартный случай — под твоим контролем.',
+  faq1Q:'Клиенты узнают, что это бот?',
+  faq1P:'Нет. Они видят твоё имя, твой аватар, твою манеру говорить. Внешне — обычная переписка с тобой. Если хочешь — в настройках можно включить плашку «отвечает помощник».',
+  faq2Q:'Что с конфиденциальностью?',
+  faq2P:'Данные не используются для обучения нейросетей и не передаются третьим лицам. По запросу удаляются в течение 24&#160;часов. Кнопка «удалить всё» — в один клик.',
+  faq3Q:'Когда запуск?',
+  faq3P:'Открытый запуск — летом&#160;2026. Оставь заявку — напишем за неделю до старта, чтобы ты успел подключиться в числе первых.',
+  faq4Q:'Сколько это будет стоить?',
+  faq4P:'Подписка фиксированная — оплачиваешь раз в месяц и не считаешь токены. Финальная цена будет известна к запуску. Можно отключить в&#160;любой&#160;момент.',
+  faq5Q:'Можно ли вмешаться в разговор?',
+  faq5P:'Конечно. В любой момент пишешь сам — бот замолкает и наблюдает. Когда уходишь из чата — он подключается обратно.',
+  ctaKicker:'/ оставить заявку',
+  ctaH2:'Оставьте заявку<br>на ранний доступ',
+  ctaP:'Сообщим о запуске первой версии и пригласим в число первых пользователей.',
+  ctaConsent:'Нажимая кнопку, вы соглашаетесь с <a href="terms.html">Пользовательским соглашением</a> и <a href="privacy.html">Политикой конфиденциальности</a>.',
+  ctaItem0:'Подключение <b>прямо в Telegram</b> — без новых приложений',
+  ctaItem1:'Бот закрывает <b>типовые вопросы</b> — цены, расписание, условия',
+  ctaItem2:'Ты подключаешься только к <b>«горячим»</b> заявкам',
+  ctaItem3:'Ни одна заявка <b>не пропадает</b> — даже ночью и в выходные',
+  footerText:'&#169; 2026 Секретарь-бот &middot; сделано в Telegram',
+  footerPrivacy:'Конфиденциальность', footerTerms:'Условия', footerContact:'Связаться',
+},
+en:{
+  pageTitle:'Secretary·bot — answers your Telegram clients in your own words',
+  logoText:'Secretary&#160;&#183;&#160;bot',
+  navProblem:'Problem', navHow:'How it works', navWho:'Who it's for', navFaq:'FAQ',
+  navCtaFull:'Join waitlist', navCtaShort:'Waitlist',
+  eyebrow:'Now live &middot; connects right inside Telegram',
+  audMaster:'I'm a service pro', audTutor:'I'm a tutor / expert', audBiz:'I run a small biz',
+  heroCta1:'Join waitlist <span class="arrow">&#8594;</span>',
+  heroCta2:'How it works',
+  heroMeta0:'&#10003;&#160; Connect in 5 minutes',
+  heroMeta1:'&#10003;&#160; Works inside your Telegram',
+  heroMeta2:'&#10003;&#160; Already used by thousands of pros',
+  phoneStatus:'online', phoneField:'Write a message…',
+  probKicker:'/ 01 · what you're losing',
+  probH2:'Every <em>unread message</em> is money someone&#160;else just took.',
+  probSub:'While you're busy, sleeping, or with another client — Telegram requests go cold. The longer the silence, the lower the odds they come back to you. Most people decide in the first 10 minutes.',
+  loss0Sc:'Scenario 01', loss0H3:'Client messaged at 11 PM. You replied in the morning.',
+  loss0Out:'Overnight they messaged 3 more competitors. By morning, they go with whoever replied first at a fair price.',
+  loss0Big:'−72%', loss0Lbl:'chance they choose you',
+  loss1Sc:'Scenario 02', loss1H3:'You're with one client. Three more write in.',
+  loss1Out:'Every <b>fifth person</b> leaves without a reply within an hour. On weekends — every <b>third</b>.',
+  loss1Big:'−20%', loss1Lbl:'of leads that go cold',
+  loss2Sc:'Scenario 03', loss2H3:'Client asks the price. You're silent for 4 hours.',
+  loss2Out:'The psychology writes itself: <b>"must be expensive, that's why they won't say."</b> Client talked themselves out of it — and left.',
+  loss2Big:'−43%', loss2Lbl:'query-to-booking conversion',
+  probSumP:'If you get 20 requests a week and lose just 1 in 5 — that's <b style="color:var(--coral)">~16 missed clients a month.</b> At an average ticket of $60, that's <b style="color:var(--coral)">$960 walking out the door.</b> Every. Month.',
+  probStatBig:'$960', probStatLbl:'silently gone every month',
+  solKicker:'/ 02 · the fix',
+  solH2:'The bot handles <em>routine questions</em> and runs first-contact with every client.',
+  solSub:'Plugs right into your Telegram — no new apps, no complex setup. Tell it once — it answers whenever needed. Similar AI secretaries are already working for thousands of professionals.',
+  sp0:'<b>5-minute setup — right inside Telegram.</b> No apps, no dashboards, no integrations. Open a chat with the bot and tell it about yourself.',
+  sp1:'<b>Handles routine questions.</b> Pricing, schedule, policies, address, how to book — clients get answers instantly. You step in only for the “hot” leads.',
+  sp2:'<b>In your name.</b> Clients see your name and avatar. The bot only uses what you've told it — no making things up. Doesn't know? It pings you.',
+  sp3:'<b>Saves hours every day.</b> Stop answering "how much?" and "when are you free?" twenty times a day. Get that time back for real work — and your life.',
+  sp4:'<b>Your personal chats? Completely off-limits.</b> The bot has zero access to your conversations with friends, family, and existing clients. Only new incoming messages — within 24&#160;hours of arrival. Everything else is locked tight.',
+  twinClientAv:'C', twinClient:'Client', twinTagNormal:'without bot', twinTagBot:'with bot',
+  twinQ0:'"How much is it?"', twinQ1:'"Hello?"', twinQ2:'"?"',
+  twinQ0b:'"How much is it?"',
+  twinReply:'$45 gel manicure, lasts 3–4 weeks 🙂',
+  twinBuy:'"I'll take it!"',
+  twinTimeSlow:'Reply in&#160;<b>4 hours</b>', twinTimeFast:'Reply in&#160;<b>3 seconds</b>',
+  howKicker:'/ 03 · how it works',
+  howH2:'Three steps. <em>No forms, no tables,</em> no tech support.',
+  howSub:'You don't program the bot — you talk to it. Just like briefing a new assistant.',
+  step0Num:'STEP&#160;01 · ~15 MIN', step0H3:'Tell it what you do — in plain conversation',
+  step0P:'The bot asks simple questions. You answer like a real person. No forms, no fields.',
+  s0av0:'B', s0d0:'Tell me what you do?',
+  s0av1:'Y', s0d1:'online English school — 1-on-1 and mini-groups of up to 4 people',
+  s0av2:'B', s0d2:'Got it. What about your formats and pricing?',
+  s0av3:'Y', s0d3:'1-on-1 $35/lesson, group $18/lesson. Trial $10',
+  s0typing:'bot is learning…',
+  step1Num:'STEP&#160;02 · ~5 MIN', step1H3:'Check it — the bot plays client',
+  step1P:'Before going live, the bot becomes a picky customer and fires typical questions. You see its answers and fix anything that's off.',
+  s1av0:'B', s1d0:'<i>Playing client:</i> "Do you do on-site shoots at offices?"',
+  s1av1:'B', s1d1:'<i>I'd say:</i> "Yes, within the city — free. Outside city limits — $0.70/mi. Sound good?"',
+  s1av2:'Y', s1d2:'&#128077; looks good',
+  s1av3:'Y', s1d3:'actually it's $0.80/mi now, not $0.70',
+  s1typing:'edit saved &#10003;',
+  step2Num:'STEP&#160;03 · 24/7', step2H3:'Bot answers. You do your thing.',
+  step2P:'Clients message you like always — right in your Telegram. If the bot is unsure — it pings you.',
+  s2av0:'C', s2d0:'Do you work with teenagers or only adults?',
+  s2av1:'Y', s2d1:'Let me check and get back to you, just a moment 🙏',
+  s2bell:'Client <b>Alex M.</b> asked about working with teenagers. I paused — reply when you're ready.',
+  whoKicker:'/ 04 · who it's for',
+  whoH2:'If Telegram is your <em>main channel</em>, the bot pays for itself in a week.',
+  who0H3:'Service providers',
+  who0P:'Stop answering pricing and booking questions between clients. The bot has it covered.',
+  who0t0:'nail techs', who0t1:'esthetics', who0t2:'massage', who0t3:'photography',
+  who1H3:'Online experts',
+  who1P:'Client asks a question — they get an answer almost instantly, no waiting for you to finish a session.',
+  who1t0:'tutors', who1t1:'therapists', who1t2:'coaches', who1t3:'lawyers',
+  who2H3:'Small businesses',
+  who2P:'When the team is offline — Telegram keeps working. Basic questions are handled automatically.',
+  who2t0:'agencies', who2t1:'studios', who2t2:'services',
+  benKicker:'/ 05 · what changes',
+  benH2:'Six things that shift <em style="color:var(--coral)">from&#160;day&#160;one</em>.',
+  ben0H4:'24/7 replies — even nights and weekends',
+  ben0P:'Client messaged at 11:47 PM — got a reply at 11:47 PM. No more "I'll get back to you in the morning."',
+  ben1H4:'Clients see you, not a bot',
+  ben1P:'Your name, your avatar, your tone — all yours. Zero depersonalization.',
+  ben2H4:'Setup via a regular Telegram chat',
+  ben2P:'No forms, no spreadsheets, no tech skills. If you can text in Telegram — you're done in 5 minutes.',
+  ben3H4:'Handles routine questions automatically',
+  ben3P:'Pricing, timelines, policies, address, bookings — clients get answers right away. You step in only for the hot leads.',
+  ben4H4:'Notified when the bot doesn't know',
+  ben4P:'The bot never makes things up. Doesn't know — it pauses and messages you. You're always in the loop.',
+  ben5H4:'Full control over your data',
+  ben5P:'Your data is <b style="color:var(--paper)">never</b> used to train AI and never shared with third parties. Delete everything with one button.',
+  faqKicker:'/ 06 · common questions',
+  faqH2:'The things that <em>give people pause</em> the first time.',
+  faq0Q:'What if the bot says something wrong?',
+  faq0P:'The bot only uses what you've told it. If it's unsure — it doesn't go quiet or make things up. It tells the client "let me check" and immediately pings you. Every edge case stays under your control.',
+  faq1Q:'Will clients know it's a bot?',
+  faq1P:'No. They see your name, your avatar, your way of talking. Looks like a normal conversation with you. If you want — you can enable a "replied by assistant" label in settings.',
+  faq2Q:'What about privacy?',
+  faq2P:'Data is never used to train AI and never shared with third parties. Deleted on request within 24 hours. "Delete everything" — one click.',
+  faq3Q:'When does it launch?',
+  faq3P:'Public launch — summer 2026. Leave your details — we'll message you a week before launch so you can be among the first to connect.',
+  faq4Q:'How much will it cost?',
+  faq4P:'Fixed subscription — pay once a month, no token counting. Final pricing will be announced at launch. Cancel anytime.',
+  faq5Q:'Can I jump into a conversation?',
+  faq5P:'Absolutely. Just start typing — the bot steps back and watches. When you leave the chat — it picks back up.',
+  ctaKicker:'/ join the waitlist',
+  ctaH2:'Reserve your spot<br>for early access',
+  ctaP:'We'll notify you when v1 launches and invite you to be among the first users.',
+  ctaConsent:'By submitting, you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.',
+  ctaItem0:'Connect <b>directly in Telegram</b> — no new apps',
+  ctaItem1:'Bot handles <b>routine questions</b> — pricing, schedule, policies',
+  ctaItem2:'You only deal with <b>“hot”</b> leads',
+  ctaItem3:'Not a single lead <b>gets missed</b> — not at night, not on weekends',
+  footerText:'&#169; 2026 Secretary&#183;bot &middot; built on Telegram',
+  footerPrivacy:'Privacy', footerTerms:'Terms', footerContact:'Contact',
+}
+};
 
-  function switchAud(key){
-    const a = AUD[key]; if(!a) return;
-    // toggle button states
-    document.querySelectorAll('.aud-switch button').forEach(b => {
-      b.classList.toggle('active', b.dataset.aud === key);
-    });
-    // swap text
-    document.getElementById('h1-text').innerHTML = a.h1;
-    document.getElementById('lede-text').innerHTML = a.lede;
-    document.getElementById('hero-av').textContent = a.av;
-    document.getElementById('hero-name').innerHTML = a.name;
-    document.getElementById('floater1').innerHTML = '<span class="pop"></span> ' + a.f1;
-    document.getElementById('floater2').innerHTML = a.f2;
-    // rebuild chat
-    const chat = document.getElementById('hero-chat');
-    chat.innerHTML = '';
-    a.chat.forEach((msg, i) => {
-      const [who, text, time, tag] = msg;
-      const b = document.createElement('div');
-      b.className = 'bubble ' + who;
-      b.innerHTML = text + '<span class="time">' + time + '</span>' + (tag ? '<span class="tag">отвечает секретарь</span>' : '');
-      chat.appendChild(b);
-    });
-    const typing = document.createElement('div');
-    typing.className = 'typing';
-    typing.innerHTML = '<span></span><span></span><span></span>';
-    chat.appendChild(typing);
+// ═══════════════════════════════════════════════════════
+//  AUDIENCE DATA (bilingual)
+// ═══════════════════════════════════════════════════════
+const AUD = {
+  master:{
+    ru:{
+      h1:'Пока ты не отвечаешь — <em>клиент пишет конкуренту.</em><br>Личный администратор в&#160;<span class="accent">твоём&#160;Telegram</span>, отвечает за&#160;3&#160;секунды.',
+      lede:'Виртуальный секретарь подключается к твоему Telegram и&#160;отвечает клиентам от&#160;твоего имени — ценами, расписанием, условиями. Они видят твоё имя и аватар. Ни одна заявка не пропадает.',
+      av:'М', name:'Мария&#160;· Маникюр',
+      f1:'Ты в этот момент — спишь', f2:'+1 клиент записан',
+      tag:'отвечает секретарь',
+      chat:[
+        ['them','Здравствуйте! Сколько стоит маникюр с покрытием?','23:47'],
+        ['me','Здравствуйте 🙂 Маникюр с гель-лаком — 2&#160;500 ₽, держится 3-4&#160;недели. С дизайном — от&#160;3&#160;000 ₽.','23:47&#160;· прочитано',true],
+        ['them','А завтра в субботу есть время?','23:48'],
+        ['me','Да, завтра свободно в 11:00, 14:30 и 17:00. На какое время записать?','23:48&#160;· прочитано'],
+        ['them','Давайте на 14:30 🙏','23:48'],
+      ]
+    },
+    en:{
+      h1:'While you're not answering — <em>your client is texting your competitor.</em><br>A personal assistant inside&#160;<span class="accent">your&#160;Telegram</span>, replies in&#160;3&#160;seconds.',
+      lede:'A virtual secretary plugs into your Telegram and answers clients on your behalf — prices, schedule, policies. They see your name and avatar. Not a single lead slips through.',
+      av:'M', name:'Maria&#160;· Nails',
+      f1:'You at this moment — sleeping', f2:'+1 client booked',
+      tag:'bot replies',
+      chat:[
+        ['them','Hi! How much is a gel manicure?','11:47 PM'],
+        ['me','Hey 🙂 Gel manicure — $45, lasts 3–4 weeks. With nail art — from $55.','11:47 PM · seen',true],
+        ['them','Any openings this Saturday?','11:48 PM'],
+        ['me','Yes! I have 11am, 2:30pm, and 5pm available. Which works?','11:48 PM · seen'],
+        ['them','2:30pm please 🙏','11:48 PM'],
+      ]
+    }
+  },
+  tutor:{
+    ru:{
+      h1:'Клиент в поиске преподавателя — <em>выбирает за 5 минут.</em><br>Помощник отвечает <span class="accent">твоими словами</span> и записывает на пробный.',
+      lede:'Пока ты ведёшь урок, клиент пишет: «Сколько урок? Какая методика? Когда можно пробный?» Секретарь отвечает сразу и бронирует пробный урок, пока клиент горячий.',
+      av:'Д', name:'Дмитрий&#160;· Английский',
+      f1:'Ты в этот момент — ведёшь урок', f2:'+1 пробный забронирован',
+      tag:'отвечает секретарь',
+      chat:[
+        ['them','Здравствуйте, ищу преподавателя английского ребёнку, 12 лет. Сколько?','19:14'],
+        ['me','Добрый вечер 😊 Индивидуально — 2&#160;500&#160;₽/урок (60 мин). Пробный — 500&#160;₽, оценим уровень. Готовы?','19:14&#160;· прочитано',true],
+        ['them','Да, хотелось бы в эти выходные.','19:15'],
+        ['me','Суббота 11:00 или воскресенье 17:00 — что удобнее?','19:15&#160;· прочитано'],
+        ['them','Суббота в 11:00, спасибо!','19:15'],
+      ]
+    },
+    en:{
+      h1:'A client is looking for a tutor — <em>they decide in 5 minutes.</em><br>Your assistant replies <span class="accent">in your own words</span> and books the trial.',
+      lede:'While you're in a session, a client asks: "How much? What's the method? When's the trial?" The secretary answers right away and books the slot while the client is still warm.',
+      av:'D', name:'David&#160;· English',
+      f1:'You at this moment — in a lesson', f2:'+1 trial booked',
+      tag:'bot replies',
+      chat:[
+        ['them','Hi, looking for an English tutor for my kid, age 12. Rates?','7:14 PM'],
+        ['me','Hey 😊 1-on-1 — $35/lesson (60 min). Trial — $10, we'll assess their level. Ready to book?','7:14 PM · seen',true],
+        ['them','Yes, this weekend if possible.','7:15 PM'],
+        ['me','Saturday 11am or Sunday 5pm — which works better?','7:15 PM · seen'],
+        ['them','Saturday 11am, thanks!','7:15 PM'],
+      ]
+    }
+  },
+  biz:{
+    ru:{
+      h1:'Когда команда не онлайн — <em>Telegram продолжает продавать.</em><br>Администратор ведёт <span class="accent">первичный контакт</span> 24/7.',
+      lede:'Клиенты пишут в ваш рабочий Telegram. Секретарь отвечает на базовые вопросы, брифует по сценарию и передаёт вам только &laquo;горячие&raquo; заявки. Команда перестаёт тратить часы на «сколько стоит».',
+      av:'A', name:'Atelier&#160;· Студия',
+      f1:'Суббота, 22:14 — все выходные', f2:'+1 заявка в CRM',
+      tag:'отвечает секретарь',
+      chat:[
+        ['them','Добрый вечер! Интересует редизайн лого для кафе. Почём и сроки?','22:14'],
+        ['me','Здравствуйте 👋 Редизайн лого — от 35&#160;000&#160;₽, срок 7–10 дней. Для точной оценки нужен бриф — заполним вместе?','22:14&#160;· прочитано',true],
+        ['them','Да, давайте.','22:15'],
+        ['me','5 коротких вопросов. Какое название кафе и в каком городе?','22:15&#160;· прочитано'],
+        ['them','«Pond», Санкт-Петербург.','22:16'],
+      ]
+    },
+    en:{
+      h1:'When your team goes offline — <em>Telegram keeps on selling.</em><br>Your assistant handles <span class="accent">first contact</span> 24/7.',
+      lede:'Clients message your work Telegram. The secretary handles the basics, runs the brief script, and passes you only the “hot” leads. Your team stops wasting hours on "how much is it?"',
+      av:'A', name:'Atelier&#160;· Studio',
+      f1:'Saturday, 10:14 PM — everyone's off', f2:'+1 lead captured',
+      tag:'bot replies',
+      chat:[
+        ['them','Hi! We'd like a logo redesign for our café. Pricing and timeline?','10:14 PM'],
+        ['me','Hey 👋 Logo redesign starts at $450, delivery 7–10 days. To get you an exact quote, I'd need a brief — want to fill one out together?','10:14 PM · seen',true],
+        ['them','Sure, let's do it.','10:15 PM'],
+        ['me','5 quick questions. What's your café's name and city?','10:15 PM · seen'],
+        ['them','"Pond", Chicago.','10:16 PM'],
+      ]
+    }
   }
+};
 
-  // ---------- SWIPE DOTS (mobile pagination) ----------
+// ═══════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════
+let currentAud = 'master';
+let currentLang = 'ru';
+
+// ═══════════════════════════════════════════════════════
+//  AUDIENCE SWITCHER
+// ═══════════════════════════════════════════════════════
+function switchAud(key){
+  currentAud = key;
+  const a = AUD[key][currentLang];
+  if(!a) return;
+  document.querySelectorAll('.aud-switch button').forEach(b => {
+    b.classList.toggle('active', b.dataset.aud === key);
+  });
+  document.getElementById('h1-text').innerHTML = a.h1;
+  document.getElementById('lede-text').innerHTML = a.lede;
+  document.getElementById('hero-av').textContent = a.av;
+  document.getElementById('hero-name').innerHTML = a.name;
+  document.getElementById('floater1').innerHTML = '<span class="pop"></span> ' + a.f1;
+  document.getElementById('floater2').innerHTML = a.f2;
+  const chat = document.getElementById('hero-chat');
+  chat.innerHTML = '';
+  a.chat.forEach(msg => {
+    const [who, text, time, tag] = msg;
+    const b = document.createElement('div');
+    b.className = 'bubble ' + who;
+    b.innerHTML = text + '<span class="time">' + time + '</span>' + (tag ? '<span class="tag">' + a.tag + '</span>' : '');
+    chat.appendChild(b);
+  });
+  const typing = document.createElement('div');
+  typing.className = 'typing';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  chat.appendChild(typing);
+}
+
+// ═══════════════════════════════════════════════════════
+//  LANGUAGE ENGINE
+// ═══════════════════════════════════════════════════════
+function applyLang(lang){
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const k = el.getAttribute('data-t');
+    if(T[lang]?.[k] !== undefined) el.innerHTML = T[lang][k];
+  });
+  const sw = document.getElementById('audSwitch');
+  if(sw) sw.setAttribute('aria-label', lang === 'ru' ? 'Аудитория' : 'Audience');
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+  document.title = T[lang].pageTitle;
+  switchAud(currentAud);
+}
+
+function setLang(lang){
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  applyLang(lang);
+}
+
+// ═══════════════════════════════════════════════════════
+//  SWIPE DOTS
+// ═══════════════════════════════════════════════════════
   function initSwipeDots(railId, dotsId){
     const rail = document.getElementById(railId);
     const dotsBox = document.getElementById(dotsId);
     if(!rail || !dotsBox) return;
-
     function rebuild(){
       const isMobile = window.matchMedia('(max-width: 768px)').matches;
       dotsBox.innerHTML = '';
@@ -1502,7 +1843,6 @@
       });
       update();
     }
-
     function update(){
       const dots = dotsBox.querySelectorAll('.d');
       if(!dots.length) return;
@@ -1515,59 +1855,52 @@
         const dist = Math.abs(c.offsetLeft - rail.offsetLeft - scrollX - 20);
         if(dist < bestDist){ bestDist = dist; best = i; }
       }
-      // clamp to dot count (sentinel ::after isn't a child, but be safe)
       best = Math.min(best, dots.length - 1);
       dots.forEach((d,i) => d.classList.toggle('active', i === best));
     }
-
     rebuild();
     rail.addEventListener('scroll', update, {passive:true});
     window.addEventListener('resize', rebuild);
   }
-
   initSwipeDots('benefitsGrid', 'benefitsDots');
 
-  // ---------- ЯНДЕКС ФОРМЫ: авто-высота iframe ----------
-  // Яндекс Формы шлют postMessage при загрузке и после любого изменения
-  // (показ экрана успеха, валидация). Подхватываем → убираем внутренний скролл.
-  //
-  // Возможные форматы из разных версий Яндекс Форм:
-  //   { height: N }
-  //   { iframe_height: N }
-  //   строка вида "{"height":N}"
+// ═══════════════════════════════════════════════════════
+//  YANDEX FORMS AUTO-HEIGHT
+// ═══════════════════════════════════════════════════════
   (function(){
     var iframe = document.getElementById('yfIframe');
     if (!iframe) return;
-
     function applyHeight(px){
-      // +64px — запас: кнопка + нижний padding Яндекс Форм
       var h = Math.round(px) + 64;
-      // Никогда не уменьшаем ниже стартовых 640px (защита от ложных событий)
       if (h < 640) return;
       iframe.style.height = h + 'px';
     }
-
     window.addEventListener('message', function(e){
       if (e.origin !== 'https://forms.yandex.ru') return;
       try {
         var d = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
         if (!d) return;
-        // handle both known key names
         var h = d.height || d.iframe_height || 0;
         if (h > 50) applyHeight(h);
       } catch(_){}
     }, false);
   })();
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+currentLang = localStorage.getItem('lang') || 'ru';
+applyLang(currentLang);
 </script>
 
 <!-- ============ FOOTER ============ -->
 <div class="wrap">
   <footer>
-    <div>© 2026 Секретарь-бот · сделано в Telegram</div>
+    <div data-t="footerText">© 2026 Секретарь-бот · сделано в Telegram</div>
     <div class="links">
-      <a href="privacy.html">Конфиденциальность</a>
-      <a href="terms.html">Условия</a>
-      <a href="contacts.html">Связаться</a>
+      <a href="privacy.html" data-t="footerPrivacy">Конфиденциальность</a>
+      <a href="terms.html" data-t="footerTerms">Условия</a>
+      <a href="contacts.html" data-t="footerContact">Связаться</a>
     </div>
   </footer>
 </div>

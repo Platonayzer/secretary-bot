@@ -119,3 +119,34 @@ footer.legal-footer .links{
   footer.legal-footer .links{flex-direction:column;gap:10px 0}
   .contact-card{padding:18px 20px;gap:14px}
 }
+
+/* ============================================================
+   LANGUAGE SWITCHER  (shared across all pages)
+   ============================================================ */
+.lang-switch{
+  display:inline-flex;
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:3px;
+  gap:2px;
+  flex-shrink:0;
+}
+.lang-btn{
+  background:transparent;border:none;cursor:pointer;font-family:inherit;
+  padding:6px 12px;border-radius:999px;
+  color:var(--ink-2);font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:5px;
+  transition:all .2s ease;white-space:nowrap;
+}
+.lang-btn.active{background:var(--ink);color:var(--paper)}
+.lang-btn:not(.active):hover{color:var(--ink)}
+.lang-flag{font-size:15px;line-height:1}
+
+/* Hide the lang-content block that doesn't match the active language */
+.lang-content{transition:none}
+
+@media (max-width:640px){
+  .lang-btn{padding:5px 9px;font-size:12px}
+  nav.top{justify-content:space-between}
+}

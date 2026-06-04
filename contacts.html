@@ -15,72 +15,160 @@
   <nav class="top">
     <a class="logo" href="./">
       <span class="dot">с</span>
-      <span>Секретарь&middot;bot</span>
+      <span data-t="logoText">Секретарь&middot;bot</span>
     </a>
-    <a class="back-link" href="./">← На главную</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')"><span class="lang-flag">🇷🇺</span> RU</button>
+      <button class="lang-btn"        data-lang="en" onclick="setLang('en')"><span class="lang-flag">🇬🇧</span> EN</button>
+    </div>
+    <a class="back-link" href="./">
+      <span data-t="backLink">← На главную</span>
+    </a>
   </nav>
 
   <header class="page-head">
-    <div class="kicker">/ Связь</div>
-    <h1>Контакты для связи</h1>
-    <div class="page-meta">Отвечаем в течение 1–2 рабочих дней</div>
+    <div class="kicker" data-t="kicker">/ Связь</div>
+    <h1 data-t="pageH1">Контакты для связи</h1>
+    <div class="page-meta" data-t="pageMeta">Отвечаем в течение 1–2 рабочих дней</div>
   </header>
 
   <main class="content">
 
-    <p>Напишите нам — если есть вопросы про Сервис, нужно отозвать заявку, удалить данные или просто обсудить идею. Мы открыты и читаем всё.</p>
+    <!-- ═══ RUSSIAN CONTENT ═══ -->
+    <div class="lang-content" data-lang-content="ru">
+      <p>Напишите нам — если есть вопросы про Сервис, нужно отозвать заявку, удалить данные или просто обсудить идею. Мы открыты и читаем всё.</p>
 
-    <a class="contact-card" href="https://t.me/rizanna_alexeevna" target="_blank" rel="noopener">
-      <div class="ico">✈</div>
-      <div>
-        <div class="label">Telegram (предпочтительно)</div>
-        <div class="val">@rizanna_alexeevna</div>
-      </div>
-    </a>
+      <a class="contact-card" href="https://t.me/rizanna_alexeevna" target="_blank" rel="noopener">
+        <div class="ico">✈</div>
+        <div>
+          <div class="label">Telegram (предпочтительно)</div>
+          <div class="val">@rizanna_alexeevna</div>
+        </div>
+      </a>
 
-    <a class="contact-card" id="emailCard" href="#" rel="noopener">
-      <div class="ico">✉</div>
-      <div>
-        <div class="label">Электронная почта</div>
-        <div class="val" id="emailVal">загрузка…</div>
-      </div>
-    </a>
-    <script>
-      // Email собирается из частей, чтобы обходить автоматическую обфускацию
-      // (Cloudflare Email Obfuscation и т.п.) и спам-сканеры.
-      (function(){
-        var u = ['jirilkin','arsen'].join('');
-        var d = ['gmail','com'].join('.');
-        var addr = u + '\u0040' + d;
-        var card = document.getElementById('emailCard');
-        var val  = document.getElementById('emailVal');
-        if (card) card.href = 'mailto:' + addr;
-        if (val)  val.textContent = addr;
-      })();
-    </script>
+      <a class="contact-card emailCard" href="#" rel="noopener">
+        <div class="ico">✉</div>
+        <div>
+          <div class="label">Электронная почта</div>
+          <div class="val emailVal">загрузка…</div>
+        </div>
+      </a>
 
-    <h2>По каким вопросам пишут чаще всего</h2>
-    <ul>
-      <li><b>Хочу удалить мою заявку.</b> Напишите в Telegram или на почту — удалим в течение рабочего дня.</li>
-      <li><b>Когда запуск?</b> Лето 2026. Точную дату мы пришлём всем, кто оставил заявку, за неделю до старта.</li>
-      <li><b>Как изменить контакт в заявке?</b> Напишите нам — обновим запись.</li>
-      <li><b>Сотрудничество, партнёрство, медиа.</b> Пишите на почту — ответит основатель проекта.</li>
-    </ul>
+      <h2>По каким вопросам пишут чаще всего</h2>
+      <ul>
+        <li><b>Хочу удалить мою заявку.</b> Напишите в Telegram или на почту — удалим в течение рабочего дня.</li>
+        <li><b>Когда запуск?</b> Лето 2026. Точную дату мы пришлём всем, кто оставил заявку, за неделю до старта.</li>
+        <li><b>Как изменить контакт в заявке?</b> Напишите нам — обновим запись.</li>
+        <li><b>Сотрудничество, партнёрство, медиа.</b> Пишите на почту — ответит основатель проекта.</li>
+      </ul>
 
-    <h2>Юридические сведения</h2>
-    <p>Проект «Секретарь-бот» находится на стадии pre-launch. После регистрации юридического лица здесь появятся ИНН, ОГРН и почтовый адрес. До этого момента все обращения принимаются по&nbsp;контактам выше.</p>
+      <h2>Юридические сведения</h2>
+      <p>Проект «Секретарь-бот» находится на стадии pre-launch. После регистрации юридического лица здесь появятся ИНН, ОГРН и почтовый адрес. До этого момента все обращения принимаются по&nbsp;контактам выше.</p>
+    </div>
+
+    <!-- ═══ ENGLISH CONTENT ═══ -->
+    <div class="lang-content" data-lang-content="en" style="display:none">
+      <p>Write to us — whether you have questions about the Service, want to withdraw your request, delete your data, or just talk through an idea. We're open and read everything.</p>
+
+      <a class="contact-card" href="https://t.me/rizanna_alexeevna" target="_blank" rel="noopener">
+        <div class="ico">✈</div>
+        <div>
+          <div class="label">Telegram (preferred)</div>
+          <div class="val">@rizanna_alexeevna</div>
+        </div>
+      </a>
+
+      <a class="contact-card emailCard" href="#" rel="noopener">
+        <div class="ico">✉</div>
+        <div>
+          <div class="label">Email</div>
+          <div class="val emailVal">loading…</div>
+        </div>
+      </a>
+
+      <h2>What people usually write about</h2>
+      <ul>
+        <li><b>I want to delete my request.</b> Write on Telegram or by email — we'll remove it within a business day.</li>
+        <li><b>When does it launch?</b> Summer 2026. We'll message everyone who left a request a week before launch.</li>
+        <li><b>How do I update my contact in the request?</b> Write to us — we'll update your record.</li>
+        <li><b>Partnerships, collaboration, press.</b> Email us — the project founder will reply.</li>
+      </ul>
+
+      <h2>Legal information</h2>
+      <p>Secretary·bot is in pre-launch. Once we register a legal entity, our registration details and mailing address will appear here. Until then, all inquiries are handled via the contacts above.</p>
+    </div>
 
   </main>
 
   <footer class="legal-footer">
-    <div>© 2026 Секретарь-бот</div>
+    <div data-t="footerCopy">© 2026 Секретарь-бот</div>
     <div class="links">
-      <a href="privacy.html">Конфиденциальность</a>
-      <a href="terms.html">Условия</a>
-      <a href="contacts.html">Связаться</a>
+      <a href="privacy.html" data-t="footerPrivacy">Конфиденциальность</a>
+      <a href="terms.html"   data-t="footerTerms">Условия</a>
+      <a href="contacts.html" data-t="footerContact">Связаться</a>
     </div>
   </footer>
 </div>
+
+<script>
+// ── i18n ──────────────────────────────────────────────────────────────────────
+const T = {
+  ru: {
+    pageTitle:    'Контакты — Секретарь-бот',
+    logoText:     'Секретарь&middot;bot',
+    backLink:     '← На главную',
+    kicker:       '/ Связь',
+    pageH1:       'Контакты для связи',
+    pageMeta:     'Отвечаем в течение 1–2 рабочих дней',
+    footerCopy:   '© 2026 Секретарь-бот',
+    footerPrivacy:'Конфиденциальность',
+    footerTerms:  'Условия',
+    footerContact:'Связаться',
+  },
+  en: {
+    pageTitle:    'Contact — Secretary·bot',
+    logoText:     'Secretary&middot;bot',
+    backLink:     '← Home',
+    kicker:       '/ Contact',
+    pageH1:       'Get in touch',
+    pageMeta:     'We usually reply within 1–2 business days',
+    footerCopy:   '© 2026 Secretary·bot',
+    footerPrivacy:'Privacy',
+    footerTerms:  'Terms',
+    footerContact:'Contact',
+  }
+};
+
+function applyLang(lang){
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const k = el.getAttribute('data-t');
+    if (T[lang]?.[k] !== undefined) el.innerHTML = T[lang][k];
+  });
+  document.querySelectorAll('.lang-content').forEach(el => {
+    el.style.display = el.getAttribute('data-lang-content') === lang ? '' : 'none';
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+  document.title = T[lang].pageTitle;
+}
+
+function setLang(lang){
+  localStorage.setItem('lang', lang);
+  applyLang(lang);
+}
+
+// ── Email obfuscation (applies to all .emailCard / .emailVal in both langs) ──
+(function(){
+  const addr = ['jirilkin','arsen'].join('') + '\u0040' + ['gmail','com'].join('.');
+  document.querySelectorAll('.emailCard').forEach(el => { el.href = 'mailto:' + addr; });
+  document.querySelectorAll('.emailVal').forEach(el => { el.textContent = addr; });
+})();
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+applyLang(localStorage.getItem('lang') || 'ru');
+</script>
 
 </body>
 </html>

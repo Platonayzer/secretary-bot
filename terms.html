@@ -10,74 +10,111 @@
 <link rel="stylesheet" href="legal.css">
 </head>
 <body>
-
 <div class="wrap">
   <nav class="top">
     <a class="logo" href="./">
       <span class="dot">с</span>
-      <span>Секретарь&middot;bot</span>
+      <span data-t="logoText">Секретарь&middot;bot</span>
     </a>
-    <a class="back-link" href="./">← На главную</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')"><span class="lang-flag">&#x1F1F7;&#x1F1FA;</span> RU</button>
+      <button class="lang-btn"        data-lang="en" onclick="setLang('en')"><span class="lang-flag">&#x1F1EC;&#x1F1E7;</span> EN</button>
+    </div>
+    <a class="back-link" href="./">
+      <span data-t="backLink">&#8592; На главную</span>
+    </a>
   </nav>
-
   <header class="page-head">
-    <div class="kicker">/ Документ</div>
-    <h1>Пользовательское соглашение</h1>
-    <div class="page-meta">Редакция от 28 мая 2026 года (обновлено в связи со сменой сервиса приёма форм)</div>
+    <div class="kicker" data-t="kicker">/ Документ</div>
+    <h1 data-t="pageH1">Пользовательское соглашение</h1>
+    <div class="page-meta" data-t="pageMeta">Редакция от 28 мая 2026 года</div>
   </header>
-
   <main class="content">
+    <div class="lang-content" data-lang-content="ru">
+      <h2>1. Общие положения</h2>
+      <p>Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между командой проекта «Секретарь-бот» (далее — «Мы», «Сервис») и любым физическим или юридическим лицом (далее — «Пользователь»), оставившим заявку на ранний доступ к Сервису через сайт.</p>
+      <p>Сервис «Секретарь-бот» — это программный продукт, который позволяет автоматизировать первичную обработку входящих сообщений в&nbsp;Telegram и закрывать типовые вопросы клиентов от имени Пользователя.</p>
+      <p>Оставляя заявку, Пользователь подтверждает, что ознакомился с условиями настоящего Соглашения и&nbsp;<a href="privacy.html">Политики конфиденциальности</a> и согласен с ними.</p>
+      <h2>2. Предмет соглашения</h2>
+      <p>На данном этапе Сервис находится в стадии разработки и подготовки к запуску (pre-launch). Заявка пользователя означает интерес к продукту и согласие получить уведомление о запуске.</p>
+      <p>Мы обязуемся:</p>
+      <ul>
+        <li>уведомить Пользователя о запуске Сервиса по указанному им контакту;</li>
+        <li>не передавать контактные данные третьим лицам, за исключением технического обработчика форм, привлечённого для доставки заявок (см.&nbsp;<a href="privacy.html">Политику конфиденциальности</a>);</li>
+        <li>не использовать контактные данные для рассылки рекламы сторонних продуктов.</li>
+      </ul>
+      <p>Мы не гарантируем:</p>
+      <ul>
+        <li>точную дату запуска Сервиса;</li>
+        <li>финальный набор функций и тарифную модель;</li>
+        <li>предоставление доступа всем заявителям одновременно.</li>
+      </ul>
+      <h2>3. Приём заявок и привлечение внешнего обработчика</h2>
+      <p>Для технического приёма и доставки заявок мы привлекаем сервис <b>Яндекс Формы</b> (оператор — ООО «Яндекс», юрисдикция — Россия).</p>
+      <p>Отправляя заявку, Пользователь соглашается с тем, что его данные (имя и контакт) будут переданы в Яндекс Формы в порядке, описанном в <a href="privacy.html">Политике конфиденциальности</a> (разделы&nbsp;3 и&nbsp;4).</p>
+      <h2>4. Права и обязанности сторон</h2>
+      <p>Пользователь обязуется указывать достоверные данные при заполнении формы заявки и не передавать чужие контактные данные без согласия их владельцев.</p>
+      <p>Мы вправе отказать Пользователю в предоставлении доступа к Сервису без объяснения причин, в&nbsp;том числе при подозрении на спам, автоматизированную регистрацию или иное недобросовестное поведение.</p>
+      <p>Пользователь вправе в любой момент отозвать свою заявку и потребовать удаления своих персональных данных, обратившись к нам по контактам, указанным на странице&nbsp;<a href="contacts.html">«Контакты»</a>.</p>
+      <h2>5. Ограничение ответственности</h2>
+      <p>Сервис предоставляется на условиях «как есть». Мы не несём ответственности за прямые или косвенные убытки, возникшие в результате ожидания запуска Сервиса, его временной недоступности или изменений в&nbsp;функциональности.</p>
+      <p>Мы также не несём ответственности за временные сбои в работе Яндекс Форм, в результате которых заявка может не быть доставлена. В таком случае Пользователь может связаться с нами альтернативным способом, указанным на странице&nbsp;<a href="contacts.html">«Контакты»</a>.</p>
+      <h2>6. Изменение условий</h2>
+      <p>Мы оставляем за собой право изменять условия настоящего Соглашения. Актуальная редакция всегда доступна по адресу настоящей страницы. Существенные изменения мы доводим до Пользователей по указанным ими контактам.</p>
+      <h2>7. Контакты</h2>
+      <p>По всем вопросам, связанным с настоящим Соглашением, можно обратиться по адресам, указанным на странице&nbsp;<a href="contacts.html">«Контакты для связи»</a>.</p>
+    </div>
 
-    <h2>1. Общие положения</h2>
-    <p>Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между командой проекта «Секретарь-бот» (далее — «Мы», «Сервис») и любым физическим или юридическим лицом (далее — «Пользователь»), оставившим заявку на ранний доступ к Сервису через сайт.</p>
-    <p>Сервис «Секретарь-бот» — это программный продукт, который позволяет автоматизировать первичную обработку входящих сообщений в&nbsp;Telegram и закрывать типовые вопросы клиентов от имени Пользователя.</p>
-    <p>Оставляя заявку, Пользователь подтверждает, что ознакомился с условиями настоящего Соглашения и&nbsp;<a href="privacy.html">Политики конфиденциальности</a> и согласен с ними.</p>
-
-    <h2>2. Предмет соглашения</h2>
-    <p>На данном этапе Сервис находится в стадии разработки и подготовки к запуску (pre-launch). Заявка пользователя означает интерес к продукту и согласие получить уведомление о запуске.</p>
-    <p>Мы обязуемся:</p>
-    <ul>
-      <li>уведомить Пользователя о запуске Сервиса по указанному им контакту;</li>
-      <li>не передавать контактные данные третьим лицам, за исключением технического обработчика форм, привлеченного для доставки заявок (см.&nbsp;<a href="privacy.html">Политику конфиденциальности</a>);</li>
-      <li>не использовать контактные данные для рассылки рекламы сторонних продуктов.</li>
-    </ul>
-    <p>Мы не гарантируем:</p>
-    <ul>
-      <li>точную дату запуска Сервиса;</li>
-      <li>финальный набор функций и тарифную модель;</li>
-      <li>предоставление доступа всем заявителям одновременно.</li>
-    </ul>
-
-    <h2>3. Приём заявок и привлечение внешнего обработчика</h2>
-    <p>Для технического приёма и доставки заявок мы привлекаем сервис <b>Яндекс Формы</b> (оператор — ООО «Яндекс», юрисдикция — Россия).</p>
-    <p>Отправляя заявку, Пользователь соглашается с тем, что его данные (имя и контакт) будут переданы в Яндекс Формы в порядке, описанном в <a href="privacy.html">Политике конфиденциальности</a> (разделы&nbsp;3 и&nbsp;4).</p>
-
-    <h2>4. Права и обязанности сторон</h2>
-    <p>Пользователь обязуется указывать достоверные данные при заполнении формы заявки и не передавать чужие контактные данные без согласия их владельцев.</p>
-    <p>Мы вправе отказать Пользователю в предоставлении доступа к Сервису без объяснения причин, в&nbsp;том числе при подозрении на спам, автоматизированную регистрацию или иное недобросовестное поведение.</p>
-    <p>Пользователь вправе в любой момент отозвать свою заявку и потребовать удаления своих персональных данных, обратившись к нам по контактам, указанным на странице&nbsp;<a href="contacts.html">«Контакты»</a>.</p>
-
-    <h2>5. Ограничение ответственности</h2>
-    <p>Сервис предоставляется на условиях «как есть». Мы не несём ответственности за прямые или косвенные убытки, возникшие в результате ожидания запуска Сервиса, его временной недоступности или изменений в&nbsp;функциональности.</p>
-    <p>Мы также не несём ответственности за временные сбои в работе Яндекс Форм, в результате которых заявка может не быть доставлена. В таком случае Пользователь может связаться с нами альтернативным способом, указанным на странице&nbsp;<a href="contacts.html">«Контакты»</a>.</p>
-
-    <h2>6. Изменение условий</h2>
-    <p>Мы оставляем за собой право изменять условия настоящего Соглашения. Актуальная редакция всегда доступна по адресу настоящей страницы. Существенные изменения мы доводим до Пользователей по указанным ими контактам.</p>
-
-    <h2>7. Контакты</h2>
-    <p>По всем вопросам, связанным с настоящим Соглашением, можно обратиться по адресам, указанным на странице&nbsp;<a href="contacts.html">«Контакты для связи»</a>.</p>
-
+    <div class="lang-content" data-lang-content="en" style="display:none">
+      <h2>1. General provisions</h2>
+      <p>This Terms of Service ("Agreement") governs the relationship between the Secretary&#183;bot project team ("We", "Service") and any individual or legal entity ("User") who has submitted an early-access request via the website.</p>
+      <p>Secretary&#183;bot is a software product that automates first-response handling of incoming Telegram messages and resolves routine client questions on behalf of the User.</p>
+      <p>By submitting a request, the User confirms they have read and agreed to the terms of this Agreement and the <a href="privacy.html">Privacy Policy</a>.</p>
+      <h2>2. Scope of the Agreement</h2>
+      <p>At this stage, the Service is in development and pre-launch. Submitting a request signals interest in the product and consent to receive a launch notification.</p>
+      <p>We commit to:</p>
+      <ul>
+        <li>notifying the User about the Service launch via their provided contact;</li>
+        <li>not sharing contact data with third parties, except the form-processing service engaged solely for delivery of requests (see <a href="privacy.html">Privacy Policy</a>);</li>
+        <li>not using contact data to send advertising for third-party products.</li>
+      </ul>
+      <p>We do not guarantee:</p>
+      <ul>
+        <li>an exact launch date for the Service;</li>
+        <li>the final feature set or pricing model;</li>
+        <li>simultaneous access for all applicants.</li>
+      </ul>
+      <h2>3. Form handling &amp; third-party processor</h2>
+      <p>For technical receipt and delivery of applications we use <b>Yandex Forms</b> (operated by Yandex LLC, Russia).</p>
+      <p>By submitting a request, the User agrees that their data (name and contact) will be transmitted to Yandex Forms as described in the <a href="privacy.html">Privacy Policy</a> (sections 3 and 4).</p>
+      <h2>4. Rights and obligations</h2>
+      <p>The User agrees to provide accurate data when filling out the application form, and not to submit third parties' contact information without their consent.</p>
+      <p>We reserve the right to deny a User access to the Service without explanation, including on suspicion of spam, automated sign-up, or other bad-faith behavior.</p>
+      <p>The User may withdraw their request and demand deletion of personal data at any time by contacting us via the <a href="contacts.html">Contacts</a> page.</p>
+      <h2>5. Limitation of liability</h2>
+      <p>The Service is provided "as is". We are not liable for direct or indirect losses arising from waiting for the Service launch, its temporary unavailability, or changes to its functionality.</p>
+      <p>We are also not liable for temporary Yandex Forms outages that may prevent delivery of a request. In that case, the User may contact us directly via the <a href="contacts.html">Contacts</a> page.</p>
+      <h2>6. Changes to the Agreement</h2>
+      <p>We reserve the right to modify the terms of this Agreement. The current version is always available at this page. Significant changes are communicated to Users via their provided contacts.</p>
+      <h2>7. Contact</h2>
+      <p>For all questions related to this Agreement, please contact us via the <a href="contacts.html">Contacts</a> page.</p>
+    </div>
   </main>
 
   <footer class="legal-footer">
-    <div>© 2026 Секретарь-бот</div>
+    <div data-t="footerCopy">&#169; 2026 Секретарь-бот</div>
     <div class="links">
-      <a href="privacy.html">Конфиденциальность</a>
-      <a href="terms.html">Условия</a>
-      <a href="contacts.html">Связаться</a>
+      <a href="privacy.html"  data-t="footerPrivacy">Конфиденциальность</a>
+      <a href="terms.html"    data-t="footerTerms">Условия</a>
+      <a href="contacts.html" data-t="footerContact">Связаться</a>
     </div>
   </footer>
 </div>
-
+<script>
+const T={ru:{pageTitle:"Пользовательское соглашение — Секретарь-бот",logoText:"Секретарь&middot;bot",backLink:"&#8592; На главную",kicker:"/ Документ",pageH1:"Пользовательское соглашение",pageMeta:"Редакция от 28 мая 2026 года (обновлено в связи со сменой сервиса приёма форм)",footerCopy:"&#169; 2026 Секретарь-бот",footerPrivacy:"Конфиденциальность",footerTerms:"Условия",footerContact:"Связаться"},en:{pageTitle:"Terms of Service — Secretary·bot",logoText:"Secretary&middot;bot",backLink:"&#8592; Home",kicker:"/ Document",pageH1:"Terms of Service",pageMeta:"Last updated May 28, 2026 (revised following change of form-processing service)",footerCopy:"&#169; 2026 Secretary&#183;bot",footerPrivacy:"Privacy",footerTerms:"Terms",footerContact:"Contact"}};
+function applyLang(l){document.querySelectorAll("[data-t]").forEach(e=>{const k=e.getAttribute("data-t");if(T[l]?.[k]!==undefined)e.innerHTML=T[l][k]});document.querySelectorAll(".lang-content").forEach(e=>{e.style.display=e.getAttribute("data-lang-content")===l?"":"none"});document.querySelectorAll(".lang-btn").forEach(b=>{b.classList.toggle("active",b.dataset.lang===l)});document.documentElement.lang=l;document.title=T[l].pageTitle}
+function setLang(l){localStorage.setItem("lang",l);applyLang(l)}
+applyLang(localStorage.getItem("lang")||"ru");
+</script>
 </body>
 </html>
