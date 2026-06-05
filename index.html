@@ -581,7 +581,17 @@
   }
   .yf-consent a:hover{color:#fff}
 
-  /* Early Access form (legacy, no longer used) */
+  /* Telegram CTA button */
+  .tg-cta-btn{
+    background:#fff;color:var(--coral);
+    font-size:17px;padding:18px 28px;
+    margin:20px 0 0;
+    display:inline-flex;align-items:center;gap:10px;
+    box-shadow:0 8px 24px -8px rgba(24,23,21,.25);
+  }
+  .tg-cta-btn:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+
+  /* Waitlist form (legacy, no longer used) */
   .lead-form{display:flex;flex-direction:column;gap:12px;margin-top:8px}
   .lead-form .field-row{display:flex;gap:10px;flex-wrap:wrap}
   .lead-form input,
@@ -1020,9 +1030,9 @@
         <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')"><span class="lang-flag">&#x1F1F7;&#x1F1FA;</span> RU</button>
         <button class="lang-btn"        data-lang="en" onclick="setLang('en')"><span class="lang-flag">&#x1F1EC;&#x1F1E7;</span> EN</button>
       </div>
-      <a class="btn btn-primary nav-cta" href="#cta">
-        <span class="nav-cta-full" data-t="navCtaFull">Получить ранний доступ</span>
-        <span class="nav-cta-short" data-t="navCtaShort">Заявка</span>
+      <a class="btn btn-primary nav-cta" href="https://t.me/secretary_bot_early" target="_blank" rel="noopener">
+        <span class="nav-cta-full" data-t="navCtaFull">Ранний доступ</span>
+        <span class="nav-cta-short" data-t="navCtaShort">Доступ</span>
         <span class="arrow">&#8594;</span>
       </a>
     </div>
@@ -1048,7 +1058,7 @@
       Виртуальный секретарь подключается к твоему Telegram и&nbsp;отвечает клиентам от&nbsp;твоего имени — ценами, расписанием, условиями. Они видят твоё имя и аватар. Ни одна заявка не пропадает.
     </p>
     <div class="hero-ctas">
-      <a class="btn btn-coral" style="padding:10px 18px;font-size:14px;width:auto;display:inline-flex" href="#cta" data-t="heroCta1">Получить ранний доступ <span class="arrow">&#8594;</span></a>
+      <a class="btn btn-coral" href="https://t.me/secretary_bot_early" target="_blank" rel="noopener" data-t="heroCta1">Ранний доступ <span class="arrow">&#8594;</span></a>
       <a class="btn btn-ghost" href="#how" data-t="heroCta2">Как это работает</a>
     </div>
     <div class="hero-meta">
@@ -1399,18 +1409,17 @@
 <div class="wrap">
   <div class="final" id="cta">
 
-    <!-- LEFT: iframe form card -->
+    <!-- LEFT: Telegram Early Access card -->
     <div class="cta-form-col">
-      <div class="kicker" style="color:rgba(255,255,255,.85);margin-bottom:14px" data-t="ctaKicker">/ оставить заявку</div>
-      <h2 data-t="ctaH2">Присоединяйтесь к Early Access<br>в Telegram</h2>
-      <p data-t="ctaP">Присоединяйтесь к Telegram-каналу раннего доступа и получите приглашение на бета-тест.</p>
+      <div class="kicker" style="color:rgba(255,255,255,.85);margin-bottom:14px" data-t="ctaKicker">/ ранний доступ</div>
+      <h2 data-t="ctaH2">Вступите в канал<br>раннего доступа</h2>
+      <p data-t="ctaP">Присоединяйтесь к Telegram-каналу раннего доступа и станьте одним из первых пользователей Секретарь-бота.</p>
 
-      <div class="yf-embed" style="padding:32px">
-        <h3>Join Early Access</h3>
-        <p>Be among the first users of Secretary Bot.</p>
-        <p>Get launch updates, beta access invitations and product news directly in Telegram.</p>
-        <a class="btn btn-coral" style="padding:10px 18px;font-size:14px;width:auto;display:inline-flex" href="https://t.me/+hn2-lQeRA0phZDcy" target="_blank" rel="noopener">Join Telegram Channel</a>
-      </div>
+      <a class="btn tg-cta-btn" href="https://t.me/secretary_bot_early" target="_blank" rel="noopener" data-t="ctaBtn">
+        <span>✈</span> <span data-t="ctaBtnLabel">Вступить в Telegram-канал</span> <span class="arrow">→</span>
+      </a>
+
+      <p class="yf-consent" data-t="ctaNote">Получайте новости о запуске, приглашения в бета-тест и обновления продукта прямо в Telegram.</p>
     </div>
 
     <!-- RIGHT: feature bullets -->
@@ -1432,10 +1441,10 @@ ru:{
   pageTitle:'Секретарь-бот — отвечает клиентам в Telegram твоими словами',
   logoText:'Секретарь&#160;&#183;&#160;bot',
   navProblem:'Проблема', navHow:'Как работает', navWho:'Для&#160;кого', navFaq:'FAQ',
-  navCtaFull:'Получить ранний доступ', navCtaShort:'Заявка',
+  navCtaFull:'Ранний доступ', navCtaShort:'Доступ',
   eyebrow:'Новая функция &middot; подключается прямо&#160;в&#160;Telegram',
   audMaster:'Я мастер услуг', audTutor:'Я репетитор / эксперт', audBiz:'У меня малый бизнес',
-  heroCta1:'Получить ранний доступ <span class="arrow">&#8594;</span>',
+  heroCta1:'Ранний доступ <span class="arrow">&#8594;</span>',
   heroCta2:'Как это работает',
   heroMeta0:'&#10003;&#160; Подключается за 5&#160;минут',
   heroMeta1:'&#10003;&#160; Работает в твоём&#160;Telegram',
@@ -1525,15 +1534,17 @@ ru:{
   faq2Q:'Что с конфиденциальностью?',
   faq2P:'Данные не продаются третьим лицам и не используются для обучения моделей без вашего согласия. По запросу удаляются в течение 24&#160;часов. Кнопка «удалить всё» — в один клик.',
   faq3Q:'Когда запуск?',
-  faq3P:'Открытый запуск — летом&#160;2026. Оставь заявку — напишем за неделю до старта, чтобы ты успел подключиться в числе первых.',
+  faq3P:'Открытый запуск — летом&#160;2026. Вступайте в Telegram-канал раннего доступа — там выйдет анонс за неделю до старта.',
   faq4Q:'Сколько это будет стоить?',
   faq4P:'Подписка фиксированная — оплачиваешь раз в месяц и не считаешь токены. Финальная цена будет известна к запуску. Можно отключить в&#160;любой&#160;момент.',
   faq5Q:'Можно ли вмешаться в разговор?',
   faq5P:'Конечно. В любой момент пишешь сам — бот замолкает и наблюдает. Когда уходишь из чата — он подключается обратно.',
-  ctaKicker:'/ оставить заявку',
-  ctaH2:'Присоединяйтесь к Early Access<br>в Telegram',
-  ctaP:'Присоединяйтесь к Telegram-каналу раннего доступа и получите приглашение на бета-тест.',
-  ctaConsent:'Нажимая кнопку, вы соглашаетесь с <a href="terms.html">Пользовательским соглашением</a> и <a href="privacy.html">Политикой конфиденциальности</a>.',
+  ctaKicker:'/ ранний доступ',
+  ctaH2:'Вступите в канал<br>раннего доступа',
+  ctaP:'Присоединяйтесь к Telegram-каналу раннего доступа и станьте одним из первых пользователей Секретарь-бота.',
+  ctaBtn:'✈ Вступить в Telegram-канал',
+  ctaBtnLabel:'Вступить в Telegram-канал',
+  ctaNote:'Получайте новости о запуске, приглашения в бета-тест и обновления продукта прямо в Telegram.',
   ctaItem0:'Подключение <b>прямо в Telegram</b> — без новых приложений',
   ctaItem1:'Бот закрывает <b>типовые вопросы</b> — цены, расписание, условия',
   ctaItem2:'Ты подключаешься только к <b>«горячим»</b> заявкам',
@@ -1545,10 +1556,10 @@ en:{
   pageTitle:'Secretary·bot — answers your Telegram clients in your own words',
   logoText:'Secretary&#160;&#183;&#160;bot',
   navProblem:'Problem', navHow:'How it works', navWho:"Who it's for", navFaq:'FAQ',
-  navCtaFull:'Join Early Access', navCtaShort:'Early Access',
+  navCtaFull:'Early Access', navCtaShort:'Access',
   eyebrow:'Now live &middot; connects right inside Telegram',
   audMaster:"I'm a service pro", audTutor:"I'm a tutor / expert", audBiz:"I run a small biz",
-  heroCta1:'Join Early Access <span class="arrow">&#8594;</span>',
+  heroCta1:'Get Early Access <span class="arrow">&#8594;</span>',
   heroCta2:'How it works',
   heroMeta0:'&#10003;&#160; Connect in 5 minutes',
   heroMeta1:'&#10003;&#160; Works inside your Telegram',
@@ -1638,15 +1649,17 @@ en:{
   faq2Q:'What about privacy?',
   faq2P:'Data is never sold to third parties and never used to train models without your consent. Deleted on request within 24 hours. “Delete everything” — one click.',
   faq3Q:'When does it launch?',
-  faq3P:"Public launch — summer 2026. Leave your details — we'll message you a week before launch so you can be among the first to connect.",
+  faq3P:"Public launch — summer 2026. Join the Telegram Early Access channel — we'll announce it there a week before the launch.",
   faq4Q:'How much will it cost?',
   faq4P:'Fixed subscription — pay once a month, no token counting. Final pricing will be announced at launch. Cancel anytime.',
   faq5Q:'Can I jump into a conversation?',
   faq5P:"Absolutely. Just start typing — the bot steps back and watches. When you leave the chat — it picks back up.",
-  ctaKicker:'/ join the waitlist',
-  ctaH2:'Reserve your spot<br>for early access',
-  ctaP:"We'll notify you when v1 launches and invite you to be among the first users.",
-  ctaConsent:'By submitting, you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.',
+  ctaKicker:'/ early access',
+  ctaH2:'Join the Early Access<br>Telegram channel',
+  ctaP:'Be among the first users of Secretary Bot. Get launch updates, beta invitations and product news directly in Telegram.',
+  ctaBtn:'✈ Join Telegram Channel',
+  ctaBtnLabel:'Join Telegram Channel',
+  ctaNote:'Get launch updates, beta access invitations and product news directly in Telegram.',
   ctaItem0:'Connect <b>directly in Telegram</b> — no new apps',
   ctaItem1:'Bot handles <b>routine questions</b> — pricing, schedule, policies',
   ctaItem2:'You only deal with <b>“hot”</b> leads',
@@ -1849,28 +1862,6 @@ function setLang(lang){
     window.addEventListener('resize', rebuild);
   }
   initSwipeDots('benefitsGrid', 'benefitsDots');
-
-// ═══════════════════════════════════════════════════════
-//  YANDEX FORMS AUTO-HEIGHT
-// ═══════════════════════════════════════════════════════
-  (function(){
-    var iframe = document.getElementById('yfIframe');
-    if (!iframe) return;
-    function applyHeight(px){
-      var h = Math.round(px) + 64;
-      if (h < 640) return;
-      iframe.style.height = h + 'px';
-    }
-    window.addEventListener('message', function(e){
-      if (e.origin !== 'https://forms.yandex.ru') return;
-      try {
-        var d = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
-        if (!d) return;
-        var h = d.height || d.iframe_height || 0;
-        if (h > 50) applyHeight(h);
-      } catch(_){}
-    }, false);
-  })();
 
 // ═══════════════════════════════════════════════════════
 //  INIT
