@@ -581,7 +581,7 @@
   }
   .yf-consent a:hover{color:#fff}
 
-  /* Waitlist form (legacy, no longer used) */
+  /* Early Access form (legacy, no longer used) */
   .lead-form{display:flex;flex-direction:column;gap:12px;margin-top:8px}
   .lead-form .field-row{display:flex;gap:10px;flex-wrap:wrap}
   .lead-form input,
@@ -1021,7 +1021,7 @@
         <button class="lang-btn"        data-lang="en" onclick="setLang('en')"><span class="lang-flag">&#x1F1EC;&#x1F1E7;</span> EN</button>
       </div>
       <a class="btn btn-primary nav-cta" href="#cta">
-        <span class="nav-cta-full" data-t="navCtaFull">Оставить заявку</span>
+        <span class="nav-cta-full" data-t="navCtaFull">Получить ранний доступ</span>
         <span class="nav-cta-short" data-t="navCtaShort">Заявка</span>
         <span class="arrow">&#8594;</span>
       </a>
@@ -1048,7 +1048,7 @@
       Виртуальный секретарь подключается к твоему Telegram и&nbsp;отвечает клиентам от&nbsp;твоего имени — ценами, расписанием, условиями. Они видят твоё имя и аватар. Ни одна заявка не пропадает.
     </p>
     <div class="hero-ctas">
-      <a class="btn btn-coral" href="#cta" data-t="heroCta1">Оставить заявку <span class="arrow">&#8594;</span></a>
+      <a class="btn btn-coral" href="#cta" data-t="heroCta1">Получить ранний доступ <span class="arrow">&#8594;</span></a>
       <a class="btn btn-ghost" href="#how" data-t="heroCta2">Как это работает</a>
     </div>
     <div class="hero-meta">
@@ -1402,25 +1402,14 @@
     <!-- LEFT: iframe form card -->
     <div class="cta-form-col">
       <div class="kicker" style="color:rgba(255,255,255,.85);margin-bottom:14px" data-t="ctaKicker">/ оставить заявку</div>
-      <h2 data-t="ctaH2">Оставьте заявку<br>на ранний доступ</h2>
-      <p data-t="ctaP">Сообщим о запуске первой версии и пригласим в число первых пользователей.</p>
+      <h2 data-t="ctaH2">Присоединяйтесь к Early Access<br>в Telegram</h2>
+      <p data-t="ctaP">Присоединяйтесь к Telegram-каналу раннего доступа и получите приглашение на бета-тест.</p>
 
-      <!-- Яндекс Форма — официальный iframe-embed -->
-      <div class="yf-embed">
-        <iframe
-          id="yfIframe"
-          src="https://forms.yandex.ru/u/6a15897084227c08441b37c5/"
-          frameborder="0"
-          scrolling="no"
-          width="100%"
-          height="640"
-          title="Форма заявки на ранний доступ"
-          allow="clipboard-write"
-        ></iframe>
-      </div>
-
-      <div class="yf-consent">
-        <span data-t="ctaConsent">Нажимая кнопку, вы соглашаетесь с <a href="terms.html">Пользовательским соглашением</a> и <a href="privacy.html">Политикой конфиденциальности</a>.</span>
+      <div class="yf-embed" style="padding:32px">
+        <h3>Join Early Access</h3>
+        <p>Be among the first users of Secretary Bot.</p>
+        <p>Get launch updates, beta access invitations and product news directly in Telegram.</p>
+        <a class="btn btn-coral" href="https://t.me/YOUR_CHANNEL" target="_blank" rel="noopener">Join Telegram Channel</a>
       </div>
     </div>
 
@@ -1443,10 +1432,10 @@ ru:{
   pageTitle:'Секретарь-бот — отвечает клиентам в Telegram твоими словами',
   logoText:'Секретарь&#160;&#183;&#160;bot',
   navProblem:'Проблема', navHow:'Как работает', navWho:'Для&#160;кого', navFaq:'FAQ',
-  navCtaFull:'Оставить заявку', navCtaShort:'Заявка',
+  navCtaFull:'Получить ранний доступ', navCtaShort:'Заявка',
   eyebrow:'Новая функция &middot; подключается прямо&#160;в&#160;Telegram',
   audMaster:'Я мастер услуг', audTutor:'Я репетитор / эксперт', audBiz:'У меня малый бизнес',
-  heroCta1:'Оставить заявку <span class="arrow">&#8594;</span>',
+  heroCta1:'Получить ранний доступ <span class="arrow">&#8594;</span>',
   heroCta2:'Как это работает',
   heroMeta0:'&#10003;&#160; Подключается за 5&#160;минут',
   heroMeta1:'&#10003;&#160; Работает в твоём&#160;Telegram',
@@ -1542,8 +1531,8 @@ ru:{
   faq5Q:'Можно ли вмешаться в разговор?',
   faq5P:'Конечно. В любой момент пишешь сам — бот замолкает и наблюдает. Когда уходишь из чата — он подключается обратно.',
   ctaKicker:'/ оставить заявку',
-  ctaH2:'Оставьте заявку<br>на ранний доступ',
-  ctaP:'Сообщим о запуске первой версии и пригласим в число первых пользователей.',
+  ctaH2:'Присоединяйтесь к Early Access<br>в Telegram',
+  ctaP:'Присоединяйтесь к Telegram-каналу раннего доступа и получите приглашение на бета-тест.',
   ctaConsent:'Нажимая кнопку, вы соглашаетесь с <a href="terms.html">Пользовательским соглашением</a> и <a href="privacy.html">Политикой конфиденциальности</a>.',
   ctaItem0:'Подключение <b>прямо в Telegram</b> — без новых приложений',
   ctaItem1:'Бот закрывает <b>типовые вопросы</b> — цены, расписание, условия',
@@ -1556,10 +1545,10 @@ en:{
   pageTitle:'Secretary·bot — answers your Telegram clients in your own words',
   logoText:'Secretary&#160;&#183;&#160;bot',
   navProblem:'Problem', navHow:'How it works', navWho:"Who it's for", navFaq:'FAQ',
-  navCtaFull:'Join waitlist', navCtaShort:'Waitlist',
+  navCtaFull:'Join Early Access', navCtaShort:'Early Access',
   eyebrow:'Now live &middot; connects right inside Telegram',
   audMaster:"I'm a service pro", audTutor:"I'm a tutor / expert", audBiz:"I run a small biz",
-  heroCta1:'Join waitlist <span class="arrow">&#8594;</span>',
+  heroCta1:'Join Early Access <span class="arrow">&#8594;</span>',
   heroCta2:'How it works',
   heroMeta0:'&#10003;&#160; Connect in 5 minutes',
   heroMeta1:'&#10003;&#160; Works inside your Telegram',
